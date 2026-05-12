@@ -1,0 +1,149 @@
+.address-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.address-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border: 1.5px solid #ece9d8;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.address-item:hover {
+  border-color: #1A2E1A;
+  background: #f5f4e8;
+}
+
+.address-item.active {
+  border-color: #1A2E1A;
+  background: #f0f7f0;
+}
+
+.address-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #e8f5e9;
+  color: #1A2E1A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.address-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.address-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A2E1A;
+}
+
+.address-detail {
+  font-size: 13px;
+  color: #4a4a4a;
+}
+
+.address-city {
+  font-size: 12px;
+  color: #7a7a6a;
+}
+
+.ubah-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A2E1A;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.ubah-btn:hover { background: #e8f5e9; }
+
+/* Tambah alamat baru - dashed button */
+.add-addr-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: transparent;
+  border: 2px dashed #c5c5b5;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7a7a6a;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.add-addr-btn:hover {
+  border-color: #1A2E1A;
+  color: #1A2E1A;
+  background: #f5f4e8;
+}
+
+/* Form tambah alamat */
+.add-addr-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.addr-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid #ece9d8;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafaf2;
+  color: #1A2E1A;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.addr-input:focus { border-color: #1A2E1A; }
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cancel-btn {
+  padding: 9px 18px;
+  border: 1.5px solid #ece9d8;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7a7a6a;
+  transition: background 0.2s;
+}
+.cancel-btn:hover { background: #f5f4e8; }
+
+.save-btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #1A2E1A;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  transition: background 0.2s;
+}
+.save-btn:hover { background: #243d24; }

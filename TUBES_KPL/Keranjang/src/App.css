@@ -1,0 +1,107 @@
+.app {
+  min-height: 100vh;
+  background: #FDFCF0;
+  display: flex;
+  flex-direction: column;
+}
+
+.main { flex: 1; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #1A2E1A;
+  margin-bottom: 6px;
+}
+
+.page-sub {
+  font-size: 14px;
+  color: #7a7a6a;
+}
+
+/* 2-column layout */
+.content-layout {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.cart-list-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Tambah menu button */
+.add-more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  background: transparent;
+  border: 2px dashed #c5c5b5;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A2E1A;
+  transition: border-color 0.2s, background 0.2s;
+}
+.add-more-btn:hover {
+  border-color: #1A2E1A;
+  background: #f5f4e8;
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 60px 20px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #ece9d8;
+  color: #9a9a8a;
+  font-size: 15px;
+}
+
+.back-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A2E1A;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .page-title { font-size: 28px; }
+}
+
+@media (max-width: 480px) {
+  .container { padding: 24px 16px 40px; }
+  .page-title { font-size: 24px; }
+}
