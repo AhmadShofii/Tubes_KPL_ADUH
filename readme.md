@@ -1,82 +1,70 @@
-## NAMA TIM 
-ADUH
+# Getting Started with Create React App
 
-## Nama Kelompok
-Aditio Nugroho : 103122400008
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Chiara Chalina Devi : 103122400016
+## Available Scripts
 
-Ghina Hasna Putri Tinimada : 103122400031
+In the project directory, you can run:
 
-Ahmad Shofi : 103122400024
+### `npm start`
 
-## Struktur Folder Project
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-```bash
-TUBES_KPL/
-│
-├── public/                 # Asset publik
-│   ├── favicon.svg
-│   └── icons.svg
-│
-├── src/                    # Source code utama React
-│   ├── App.jsx             # Komponen utama aplikasi
-│   ├── App.css             # Styling App
-│   ├── index.css           # Styling global
-│   └── main.jsx            # Entry point React
-│
-├── node_modules/           # Dependency project
-│
-├── .gitignore              # File yang diabaikan Git
-├── eslint.config.js        # Konfigurasi ESLint
-├── index.html              # File HTML utama
-├── package.json            # Konfigurasi dan dependency project
-├── pnpm-lock.yaml          # Lock dependency PNPM
-├── vite.config.js          # Konfigurasi Vite
-└── README.md               # Dokumentasi project
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## Penjelasan Singkat
+### `npm test`
 
-- **public/** → Menyimpan asset seperti icon dan gambar.
-- **src/** → Berisi source code utama aplikasi React.
-- **App.jsx** → Tampilan utama aplikasi.
-- **main.jsx** → File pertama yang dijalankan React.
-- **package.json** → Berisi dependency dan script project.
-- **vite.config.js** → Konfigurasi build menggunakan Vite.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Teknologi yang Digunakan
+### `npm run build`
 
-### Framework
-- Vite
-- React.js
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### Frontend
-- React.js
-- CSS
-- JavaScript
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-### Backend
-- node.js
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Database
-- MySQL
+### `npm run eject`
 
-### Tools Pendukung
-- Node.js
-- npm / pnpm
-- ESLint
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Role Pengguna
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-1. Vendor
-   - Menambahkan produk makanan
-   - Mengelola pesanan
-   - Mengatur informasi toko
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-2. Customer/User
-   - Mencari vendor makanan
-   - Melakukan pemesanan
-   - Memberikan rating/review
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -1,0 +1,219 @@
+:root {
+  --primary: #1b4d1c;
+  --bg-auth: #f6f8f1;
+  --text-gray: #717171;
+  --berry: #7a2d48;
+}
+
+.auth-page-wrapper {
+  background-color: var(--bg-auth);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+.auth-header { padding: 20px 5%; }
+.auth-container-nav { 
+  max-width: 1200px; margin: 0 auto; 
+  display: flex; justify-content: space-between; align-items: center; 
+}
+.auth-logo { color: var(--primary); font-weight: 800; font-size: 1.5rem; text-decoration: none; }
+.help-icon { font-size: 1.4rem; color: #aaa; cursor: pointer; transition: 0.3s; }
+.help-icon:hover { color: var(--primary); }
+
+/* MAIN CONTENT */
+.auth-main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px 60px;
+}
+
+.auth-card-flex {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* FORM CARD */
+.reset-form-card {
+  background: white;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+  flex: 1;
+  max-width: 480px;
+  width: 100%;
+}
+
+.reset-form-card h2 { color: var(--primary); font-size: 2rem; margin-bottom: 15px; font-weight: 800; }
+.subtitle { color: var(--text-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 35px; }
+
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 8px; color: #444; }
+
+.input-wrapper {
+  position: relative;
+  background: #f9faf5;
+  border: 1px solid #e0e4d9;
+  border-radius: 12px;
+  padding: 5px 15px;
+  transition: 0.3s;
+}
+.input-wrapper:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(27, 77, 28, 0.1); }
+
+.input-wrapper input {
+  border: none; background: transparent; outline: none;
+  width: 100%; height: 40px; font-size: 1rem; color: #333;
+}
+
+.eye-icon {
+  position: absolute; right: 15px; top: 50%; transform: translateY(-50%);
+  color: #ccc; cursor: pointer; font-size: 1.2rem; transition: 0.3s;
+}
+.eye-icon:hover { color: var(--primary); }
+
+/* SECURITY BOX */
+.security-box {
+  background: #f1f3ea;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 30px 0;
+}
+
+.security-box label { font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; color: #888; display: block; margin-bottom: 15px; }
+.security-box ul { list-style: none; }
+.security-box ul li { 
+  font-size: 0.85rem; color: #666; margin-bottom: 10px; 
+  display: flex; align-items: center; gap: 10px; transition: color 0.3s;
+}
+
+.check-v { color: var(--primary); font-size: 1.1rem; }
+.uncheck-v { color: #ccc; font-size: 1.1rem; }
+.req-met { color: var(--primary) !important; font-weight: 600; }
+
+.btn-update-pass {
+  width: 100%;
+  background: #cbd3c9; /* Warna redup kalau belum lengkap */
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+/* Warna menyala hijau tua kalau password valid */
+.btn-update-pass.ready {
+  background: var(--primary);
+  cursor: pointer;
+}
+.btn-update-pass.ready:hover { box-shadow: 0 10px 20px rgba(27, 77, 28, 0.2); }
+
+.back-login {
+  display: block; text-align: center; margin-top: 25px;
+  text-decoration: none; color: var(--primary); font-weight: 700; font-size: 0.9rem; transition: 0.3s;
+}
+.back-login:hover { text-decoration: underline; }
+
+/* SIDE DECOR */
+.auth-side-decor { flex: 1; max-width: 400px; width: 100%; }
+
+.illustration-box {
+  background: #111;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 320px;
+  margin-bottom: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.illustration-box img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform 0.6s ease; /* Tambahan animasi halus */
+}
+
+.illustration-box:hover img {
+  transform: scale(1.08); /* Efek zoom saat diarahin mouse */
+}
+
+.security-info-card {
+  background: var(--berry);
+  padding: 25px;
+  border-radius: 15px;
+  color: white;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(122, 45, 72, 0.2);
+}
+
+.shield-icon { font-size: 2rem; flex-shrink: 0; }
+.security-info-card p { font-size: 0.85rem; line-height: 1.5; margin: 0; }
+
+/* FOOTER */
+.auth-footer { padding: 30px; text-align: center; border-top: 1px solid #e0e4d9; }
+.auth-footer p { font-size: 0.8rem; color: #999; }
+
+/* ========================================= */
+/* RESPONSIVE DESIGN (MODE HP & TABLET)      */
+/* ========================================= */
+@media (max-width: 900px) {
+  .auth-card-flex { 
+    flex-direction: column; 
+    gap: 30px;
+  }
+  .reset-form-card { 
+    max-width: 100%; 
+    padding: 40px 30px; 
+  }
+  
+  /* Di layar kecil, kita sembunyikan fotonya biar nggak kepanjangan */
+  .illustration-box { display: none; }
+  
+  /* Tapi kotak Berry/Maroon tetap dipertahankan karena isinya info penting */
+  .auth-side-decor { max-width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .reset-form-card { padding: 30px 20px; }
+  .reset-form-card h2 { font-size: 1.6rem; }
+  .btn-update-pass { font-size: 0.9rem; padding: 14px; }
+}
+
+/* EFEK KILAUAN CAHAYA PADA TOMBOL (SHIMMER) */
+.btn-update-pass.ready {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-update-pass.ready::after {
+  content: '';
+  position: absolute;
+  top: 0; 
+  left: -150%;
+  width: 50%; 
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+  transform: skewX(-20deg);
+  animation: shimmer 2.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -150%; }
+  50% { left: 200%; }
+  100% { left: 200%; } /* Jeda sebentar sebelum mengulang */
+}
