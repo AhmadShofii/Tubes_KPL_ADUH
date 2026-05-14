@@ -1,7 +1,7 @@
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-// Halaman placeholder untuk route lain
+import  VendorDetail from "./pages/vendor/VendorDetail";
+// Halaman placeholder untuk route lain 
 function HomePage() {
   return (
     <div className="min-h-screen bg-[#FDFCF0] flex items-center justify-center">
@@ -21,6 +21,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/vendor/:id" element={<VendorDetail />} />
       </Routes>
     </BrowserRouter>
   );
