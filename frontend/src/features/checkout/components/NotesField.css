@@ -1,0 +1,23 @@
+.notes-textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1.5px solid #ece9d8;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fafaf2;
+  color: #1A2E1A;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+  line-height: 1.6;
+}
+
+.notes-textarea:focus {
+  border-color: #1A2E1A;
+  background: #fff;
+}
+
+.notes-textarea::placeholder {
+  color: #b0b09a;
+}
