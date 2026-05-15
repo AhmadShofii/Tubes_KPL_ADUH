@@ -1,0 +1,19 @@
+.footer {
+  margin-top: 100px;
+  padding: 60px 6%;
+  background: #f3f3f3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+}
+
+.footer h2,
+.footer h3 {
+  color: #0f5d23;
+  margin-bottom: 15px;
+}
+
+.footer p {
+  color: #555;
+  line-height: 1.8;
+}
