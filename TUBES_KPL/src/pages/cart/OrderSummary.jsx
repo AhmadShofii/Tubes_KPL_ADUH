@@ -1,4 +1,5 @@
 
+import { Link } from 'react-router-dom';
 
 const formatRp = (number) => {
   return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
@@ -49,12 +50,12 @@ const OrderSummary = ({ totalItems, subtotal, shippingFee, serviceFee, total, is
       </button>
 
       {/* Action Button */}
-      <button 
-        disabled={isCartEmpty}
-        className="w-full bg-[#053610] hover:bg-[#0a4d1a] disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-medium py-3.5 rounded-xl transition shadow-md"
+      <Link 
+        to={isCartEmpty ? '#' : '/checkout'}
+        className={`w-full block text-center ${isCartEmpty ? 'bg-gray-300 cursor-not-allowed' : 'bg-[#053610] hover:bg-[#0a4d1a] shadow-md'} text-white font-medium py-3.5 rounded-xl transition`}
       >
         Lanjut ke Checkout
-      </button>
+      </Link>
 
       <p className="text-center text-xs text-gray-400 mt-4 leading-relaxed px-4">
         Dengan menekan tombol, Anda setuju dengan <a href="#" className="underline hover:text-gray-600">Syarat & Ketentuan</a> kami.

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 
 const VendorDetail = () => {
   return (
@@ -221,10 +221,13 @@ const VendorDetail = () => {
                 </div>
               </div>
 
-              <button className="w-full bg-[#B84018] hover:bg-[#9a3513] text-white font-medium py-3 rounded-lg flex justify-center items-center gap-2 transition mb-3">
+              <Link 
+                to="/checkout"
+                className="w-full bg-[#B84018] hover:bg-[#9a3513] text-white font-medium py-3 rounded-lg flex justify-center items-center gap-2 transition mb-3"
+              >
                 Checkout Now
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </button>
+              </Link>
               
               <p className="text-center text-[10px] text-gray-400 font-medium tracking-wider mb-6">TAXES INCLUDED IN TOTAL</p>
 

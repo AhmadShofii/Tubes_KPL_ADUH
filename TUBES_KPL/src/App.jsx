@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VendorDetail from "./pages/vendor/VendorDetail";
 import CartPage from "./pages/cart/CartPage";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 // Halaman placeholder untuk route lain 
 function HomePage() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/vendor/:id" element={<VendorDetail />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </BrowserRouter>
   );
