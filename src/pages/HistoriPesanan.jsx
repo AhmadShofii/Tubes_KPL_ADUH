@@ -1,4 +1,4 @@
-import "./History.css";
+import "../styles/HistoriPesanan.css";
 import {
   FaMapMarkerAlt,
   FaShoppingCart,
@@ -11,7 +11,7 @@ import {
   FaClock,
 } from "react-icons/fa";
 
-function History() {
+function HistoriPesanan() {
   const orders = [
     {
       id: 1,
@@ -63,14 +63,13 @@ function History() {
 
   return (
     <div className="history-page">
-      {/* HEADER */}
       <header className="history-header">
         <div className="history-logo">Foodora</div>
 
         <nav className="history-nav">
           <a href="/">Home</a>
           <a href="/">Promos</a>
-          <a href="/history" className="active">
+          <a href="/histori" className="active">
             History
           </a>
         </nav>
@@ -82,7 +81,6 @@ function History() {
         </div>
       </header>
 
-      {/* MAIN */}
       <main className="history-main">
         <h1>Riwayat Pesanan</h1>
 
@@ -106,7 +104,6 @@ function History() {
         </div>
 
         <div className="history-content">
-          {/* LEFT ORDER LIST */}
           <section className="order-list">
             {orders.map((order) => (
               <div className="order-card" key={order.id}>
@@ -115,6 +112,7 @@ function History() {
 
                   <div className="order-info">
                     <h2>{order.name}</h2>
+
                     <p className="order-code">
                       ID: {order.code} • {order.items}
                     </p>
@@ -122,6 +120,7 @@ function History() {
                     <div className="order-meta">
                       <span className="order-price">{order.price}</span>
                       <span className="dot">•</span>
+
                       <span
                         className={
                           order.status === "Dibatalkan"
@@ -147,7 +146,6 @@ function History() {
             ))}
           </section>
 
-          {/* RIGHT DETAIL CARD */}
           <aside className="summary-card">
             <span className="summary-badge">TERAKHIR DIPESAN</span>
 
@@ -173,11 +171,11 @@ function History() {
         </div>
       </main>
 
-      {/* FOOTER */}
       <footer className="history-footer">
         <div className="footer-top">
           <div className="footer-brand">
             <h3>Foodora</h3>
+
             <p>
               Penyedia platform kurasi vendor makanan terbaik di Indonesia yang
               fokus pada kualitas dan kepuasan pelanggan.
@@ -207,6 +205,7 @@ function History() {
 
           <div className="footer-col subscribe">
             <h4>BERLANGGANAN</h4>
+
             <p>Dapatkan info promo dan menu terbaru setiap minggu.</p>
 
             <div className="subscribe-box">
@@ -226,4 +225,4 @@ function History() {
   );
 }
 
-export default History;
+export default HistoriPesanan;

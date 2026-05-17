@@ -1,4 +1,4 @@
-import "./PasswordSuccess.css";
+import "../styles/PasswordSuccess.css";
 import { FaCheck, FaArrowRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 

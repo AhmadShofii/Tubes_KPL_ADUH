@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Verify from "./pages/Verify";
 import PasswordSuccess from "./pages/PasswordSuccess";
-import History from "./pages/History";
+import HistoriPesanan from "./pages/HistoriPesanan";
 
 function App() {
   return (
@@ -11,7 +11,9 @@ function App() {
         <Route path="/" element={<Register />} />
         <Route path="/verify" element={<Verify />} />
         <Route path="/success" element={<PasswordSuccess />} />
-        <Route path="/history" element={<History />} />
+
+        {/* Halaman histori pesanan hanya bisa diakses lewat URL ini */}
+        <Route path="/HistoriPesanan" element={<HistoriPesanan />} />
       </Routes>
     </BrowserRouter>
   );

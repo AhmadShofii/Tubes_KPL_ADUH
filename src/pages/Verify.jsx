@@ -1,4 +1,4 @@
-import "./Verify.css";
+import "../styles/Verify.css";
 import { useRef } from "react";
 import { FaWhatsapp, FaRegEnvelope, FaArrowRight } from "react-icons/fa";
 import { MdOutlineTimer } from "react-icons/md";

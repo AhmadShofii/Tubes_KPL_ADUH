@@ -1,4 +1,4 @@
-import "./Register.css";
+import "../styles/Register.css";
 import { FaUser, FaEnvelope, FaPhone, FaLock } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
