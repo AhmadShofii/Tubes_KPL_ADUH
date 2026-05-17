@@ -422,6 +422,11 @@
   font-size: 12px;
   font-weight: 600;
 }
+<<<<<<<< HEAD:frontend/src/styles/HistoriPesanan.css
+========
+
+/* ================= RESPONSIVE ================= */
+>>>>>>>> d5d2a25fb0e87ab295f4fc9009548a5ef9d4f490:src/styles/HistoriPesanan.css
 
 @media (max-width: 1100px) {
   .history-main {

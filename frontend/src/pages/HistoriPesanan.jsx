@@ -69,7 +69,11 @@ function HistoriPesanan() {
         <nav className="history-nav">
           <a href="/">Home</a>
           <a href="/">Promos</a>
+<<<<<<<< HEAD:frontend/src/pages/HistoriPesanan.jsx
           <a href="/HistoriPesanan" className="active">
+========
+          <a href="/histori" className="active">
+>>>>>>>> d5d2a25fb0e87ab295f4fc9009548a5ef9d4f490:src/pages/HistoriPesanan.jsx
             History
           </a>
         </nav>
@@ -205,6 +209,7 @@ function HistoriPesanan() {
 
           <div className="footer-col subscribe">
             <h4>BERLANGGANAN</h4>
+
             <p>Dapatkan info promo dan menu terbaru setiap minggu.</p>
 
             <div className="subscribe-box">
