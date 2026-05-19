@@ -14,6 +14,10 @@ import VendorDetailPage from "./pages/VendorDetailPage.jsx";
 
 import LoginPage from "./pages/login.jsx";
 import ForgotPasswordPage from "./pages/ForgotPassword.jsx";
+import Register from "./pages/Register.jsx";
+import Verify from "./pages/Verify.jsx";
+import PasswordSuccess from "./pages/PasswordSuccess.jsx";
+import HistoriPesanan from "./pages/HistoriPesanan.jsx";
 
 function App() {
   return (
@@ -41,6 +45,11 @@ function App() {
           <Route path="/vendor-detail" element={<VendorDetailPage />} />
 
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/success" element={<PasswordSuccess />} />
+          <Route path="/HistoriPesanan" element={<HistoriPesanan />} />
+
         </Routes>
       </BrowserRouter>
     </CartProvider>
