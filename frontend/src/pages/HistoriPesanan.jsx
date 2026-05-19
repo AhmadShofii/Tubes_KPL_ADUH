@@ -1,7 +1,5 @@
 import "../styles/HistoriPesanan.css";
 import {
-  FaMapMarkerAlt,
-  FaShoppingCart,
   FaInstagram,
   FaEnvelope,
   FaAt,
@@ -63,28 +61,6 @@ function HistoriPesanan() {
 
   return (
     <div className="history-page">
-      <header className="history-header">
-        <div className="history-logo">Foodora</div>
-
-        <nav className="history-nav">
-          <a href="/">Home</a>
-          <a href="/">Promos</a>
-<<<<<<<< HEAD:frontend/src/pages/HistoriPesanan.jsx
-          <a href="/HistoriPesanan" className="active">
-========
-          <a href="/histori" className="active">
->>>>>>>> d5d2a25fb0e87ab295f4fc9009548a5ef9d4f490:src/pages/HistoriPesanan.jsx
-            History
-          </a>
-        </nav>
-
-        <div className="history-icons">
-          <FaMapMarkerAlt />
-          <FaShoppingCart />
-          <div className="profile-circle"></div>
-        </div>
-      </header>
-
       <main className="history-main">
         <h1>Riwayat Pesanan</h1>
 

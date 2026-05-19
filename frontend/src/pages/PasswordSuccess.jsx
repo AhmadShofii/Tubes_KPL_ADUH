@@ -7,10 +7,6 @@ function PasswordSuccess() {
 
   return (
     <div className="success-page">
-      <header className="success-header">
-        <h2>Foodora</h2>
-      </header>
-
       <main className="success-main">
         <section className="success-left">
           <div className="success-image-card">

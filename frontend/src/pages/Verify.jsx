@@ -29,10 +29,6 @@ function Verify() {
 
   return (
     <div className="verify-page">
-      <header className="verify-header">
-        <h2>Foodora</h2>
-      </header>
-
       <main className="verify-main">
         <section className="verify-left">
           <img
