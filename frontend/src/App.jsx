@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CartProvider } from "./context/CartContext.jsx";
 import Navbar from "./components/Navbar.jsx";
 
@@ -12,6 +12,9 @@ import CartPage from "./pages/CartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import VendorDetailPage from "./pages/VendorDetailPage.jsx";
 
+import LoginPage from "./pages/login.jsx";
+import ForgotPasswordPage from "./pages/ForgotPassword.jsx";
+
 function App() {
   return (
     <CartProvider>
@@ -20,6 +23,13 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/forgot-password"
+            element={<ForgotPasswordPage />}
+          />
+
           <Route path="/beranda" element={<Beranda />} />
           <Route path="/list-vendor" element={<VendorList />} />
           <Route path="/promo" element={<Promo />} />
@@ -29,6 +39,8 @@ function App() {
           <Route path="/keranjang" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/vendor-detail" element={<VendorDetailPage />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </CartProvider>
