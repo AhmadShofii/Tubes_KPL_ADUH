@@ -12,6 +12,11 @@ import CartPage from "./pages/CartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import VendorDetailPage from "./pages/VendorDetailPage.jsx";
 
+import Register from "./pages/Register.jsx";
+import Verify from "./pages/Verify.jsx";
+import PasswordSuccess from "./pages/PasswordSuccess.jsx";
+import HistoriPesanan from "./pages/HistoriPesanan.jsx";
+
 function App() {
   return (
     <CartProvider>
@@ -29,6 +34,12 @@ function App() {
           <Route path="/keranjang" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/vendor-detail" element={<VendorDetailPage />} />
+
+          <Route path="/register" element={<Register />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/success" element={<PasswordSuccess />} />
+          <Route path="/HistoriPesanan" element={<HistoriPesanan />} />
+
         </Routes>
       </BrowserRouter>
     </CartProvider>
