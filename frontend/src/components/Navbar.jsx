@@ -8,6 +8,13 @@ function Navbar() {
   const location = useLocation();
   const { totalItems } = useCart();
 
+  const user = JSON.parse(localStorage.getItem("foodora_user"));
+
+  const handleLogout = () => {
+    localStorage.removeItem("foodora_user");
+    window.location.href = "/";
+  };
+
   return (
     <motion.nav
       className="navbar"
@@ -52,7 +59,9 @@ function Navbar() {
             <FiShoppingCart className="nav-icon" />
 
             {totalItems > 0 && (
-              <span className="navbar-cart-badge">{totalItems}</span>
+              <span className="navbar-cart-badge">
+                {totalItems}
+              </span>
             )}
           </Link>
 
@@ -66,15 +75,30 @@ function Navbar() {
         </div>
 
         <div className="auth-btns">
-          <Link to="/login">
-          <button type="button" className="login-btn">
-            Login
-            </button>
-            </Link>
+          {!user ? (
+            <>
+              <Link to="/login" className="login-btn">
+                Login
+              </Link>
 
-          <button type="button" className="register-btn">
-            Register
-          </button>
+              <Link to="/register" className="register-btn">
+                Register
+              </Link>
+            </>
+          ) : (
+            <div className="user-section">
+              <span className="user-name">
+                Halo, {user.nama || user.name || "User"}
+              </span>
+
+              <button
+                className="logout-btn"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </motion.nav>

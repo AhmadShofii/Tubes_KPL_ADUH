@@ -1,5 +1,8 @@
-import { ShoppingBasket } from "lucide-react";
-import { motion } from "framer-motion";
+// frontend/src/features/vendor-detail/components/MenuCard.jsx
+
+import { useState } from "react";
+import { Clock3, Flame, Plus, ShoppingBasket, Star } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 
 function formatRupiah(amount) {
   return new Intl.NumberFormat("id-ID", {
@@ -10,60 +13,91 @@ function formatRupiah(amount) {
 }
 
 export default function MenuCard({ item, onAddToCart }) {
+  const [justAdded, setJustAdded] = useState(false);
+
+  function handleAdd() {
+    onAddToCart(item);
+    setJustAdded(true);
+    window.setTimeout(() => setJustAdded(false), 900);
+  }
+
   return (
-    <article className="group flex flex-col gap-4 rounded-[22px] border border-[#ECECE3] bg-white p-4 shadow-[0_10px_24px_rgba(0,0,0,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_36px_rgba(0,0,0,0.10)] sm:flex-row sm:items-center">
-      <div className="h-32 w-full flex-shrink-0 overflow-hidden rounded-[18px] bg-[#EEF0E8] sm:h-28 sm:w-28">
-        <img
-          src={item.image}
-          alt={item.name}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+    <motion.article
+      className="vendor-menu-card vendor-menu-card-pro"
+      layout
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
+    >
+      <div className="vendor-menu-image">
+        <img src={item.image} alt={item.name} />
+        <span className="vendor-menu-rating">
+          <Star size={14} fill="currentColor" /> {item.rating}
+        </span>
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col justify-between gap-3">
+      <div className="vendor-menu-body">
         <div>
-          <div className="mb-1.5 flex flex-wrap items-center gap-2">
-            <h3 className="text-[16px] font-bold leading-tight text-[#07552B]">
-              {item.name}
-            </h3>
+          <div className="vendor-menu-title-row">
+            <h3>{item.name}</h3>
 
-            {item.badge && (
-              <span className="rounded-full bg-[#DFF3DF] px-2.5 py-1 text-[10px] font-bold text-[#1F7A37]">
-                {item.badge}
-              </span>
-            )}
+            {item.badge && <span>{item.badge}</span>}
           </div>
 
-          <p className="max-w-2xl text-[13px] leading-5 text-[#667064]">
-            {item.description}
-          </p>
+          <p>{item.description}</p>
         </div>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[17px] font-extrabold text-[#D95F36]">
-              {formatRupiah(item.price)}
-            </span>
+        <div className="vendor-menu-info-row">
+          <small>
+            <Clock3 size={14} /> {item.prepTime}
+          </small>
+          <small>
+            <Flame size={14} /> {item.calories}
+          </small>
+          <small>{item.sold} terjual</small>
+        </div>
+
+        <div className="vendor-menu-bottom">
+          <div className="vendor-menu-price">
+            <strong>{formatRupiah(item.price)}</strong>
 
             {item.originalPrice && (
-              <span className="text-[13px] font-medium text-[#A5ABA2] line-through">
-                {formatRupiah(item.originalPrice)}
-              </span>
+              <small>{formatRupiah(item.originalPrice)}</small>
             )}
           </div>
 
           <motion.button
             type="button"
-            onClick={() => onAddToCart(item)}
+            onClick={handleAdd}
             whileHover={{ y: -3, scale: 1.03 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl bg-[#07552B] px-4 text-[13px] font-bold text-white shadow-[0_10px_20px_rgba(7,85,43,0.20)] transition-all duration-300 hover:bg-[#064822] hover:shadow-[0_14px_24px_rgba(7,85,43,0.28)] sm:w-auto sm:min-w-[132px]"
+            className={justAdded ? "added" : ""}
           >
-            <ShoppingBasket size={15} />
-            <span>Add to Cart</span>
+            <AnimatePresence mode="wait" initial={false}>
+              {justAdded ? (
+                <motion.span
+                  key="added"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                >
+                  ✓ Ditambah
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="add"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                >
+                  <ShoppingBasket size={16} />
+                  Add
+                  <Plus size={15} />
+                </motion.span>
+              )}
+            </AnimatePresence>
           </motion.button>
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }

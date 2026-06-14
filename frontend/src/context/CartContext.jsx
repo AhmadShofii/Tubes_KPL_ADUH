@@ -3,22 +3,51 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 const CartContext = createContext(null);
 const STORAGE_KEY = "foodora_cart";
 
-const DEFAULT_CART_ITEMS = [];
+function normalizeCartItem(item) {
+  const idMenu = Number(item.id_menu || item.id);
+  const qty = Number(item.qty || item.jumlah || 1);
+  const price = Number(item.price || item.harga || 0);
+
+  if (!idMenu || Number.isNaN(idMenu)) {
+    return null;
+  }
+
+  return {
+    id: idMenu,
+    id_menu: idMenu,
+    name: item.name || item.nama_menu || "Menu Foodora",
+    nama_menu: item.nama_menu || item.name || "Menu Foodora",
+    desc: item.desc || item.description || item.deskripsi || "",
+    deskripsi: item.deskripsi || item.desc || item.description || "",
+    price,
+    harga: price,
+    qty: qty > 0 ? qty : 1,
+    jumlah: qty > 0 ? qty : 1,
+    image: item.image || item.img || "",
+    img: item.img || item.image || "",
+  };
+}
 
 function getInitialCart() {
   try {
     const savedCart = localStorage.getItem(STORAGE_KEY);
 
     if (!savedCart) {
-      return DEFAULT_CART_ITEMS;
+      return [];
     }
 
     const parsedCart = JSON.parse(savedCart);
 
-    return Array.isArray(parsedCart) ? parsedCart : DEFAULT_CART_ITEMS;
+    if (!Array.isArray(parsedCart)) {
+      return [];
+    }
+
+    return parsedCart
+      .map((item) => normalizeCartItem(item))
+      .filter(Boolean);
   } catch (error) {
     console.error("Gagal membaca cart dari localStorage:", error);
-    return DEFAULT_CART_ITEMS;
+    return [];
   }
 }
 
@@ -31,51 +60,78 @@ export function CartProvider({ children }) {
 
   function addToCart(item) {
     setCartItems((prev) => {
-      const existingItem = prev.find((cartItem) => cartItem.id === item.id);
+      const normalizedItem = normalizeCartItem(item);
+
+      if (!normalizedItem) {
+        console.error("Item tidak punya id_menu valid:", item);
+        return prev;
+      }
+
+      const existingItem = prev.find(
+        (cartItem) => Number(cartItem.id_menu) === normalizedItem.id_menu
+      );
 
       if (existingItem) {
         return prev.map((cartItem) =>
-          cartItem.id === item.id
-            ? { ...cartItem, qty: cartItem.qty + 1 }
+          Number(cartItem.id_menu) === normalizedItem.id_menu
+            ? {
+                ...cartItem,
+                qty: Number(cartItem.qty || 1) + 1,
+                jumlah: Number(cartItem.qty || 1) + 1,
+              }
             : cartItem
         );
       }
 
-      return [
-        ...prev,
-        {
-          id: item.id,
-          name: item.name,
-          desc: item.desc ?? item.description ?? "",
-          price: item.price,
-          qty: 1,
-          image: item.image ?? "",
-        },
-      ];
+      return [...prev, normalizedItem];
     });
   }
 
   function updateQty(id, qty) {
-    if (qty <= 0) {
-      setCartItems((prev) => prev.filter((item) => item.id !== id));
+    const idMenu = Number(id);
+    const newQty = Number(qty);
+
+    if (!idMenu || Number.isNaN(idMenu)) {
+      return;
+    }
+
+    if (newQty <= 0) {
+      setCartItems((prev) =>
+        prev.filter((item) => Number(item.id_menu || item.id) !== idMenu)
+      );
       return;
     }
 
     setCartItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, qty } : item))
+      prev.map((item) =>
+        Number(item.id_menu || item.id) === idMenu
+          ? {
+              ...item,
+              qty: newQty,
+              jumlah: newQty,
+            }
+          : item
+      )
     );
   }
 
   function removeFromCart(id) {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    const idMenu = Number(id);
+
+    setCartItems((prev) =>
+      prev.filter((item) => Number(item.id_menu || item.id) !== idMenu)
+    );
   }
 
   function clearCart() {
     setCartItems([]);
+    localStorage.removeItem(STORAGE_KEY);
   }
 
   const totalItems = useMemo(() => {
-    return cartItems.reduce((total, item) => total + item.qty, 0);
+    return cartItems.reduce((total, item) => {
+      return total + Number(item.qty || item.jumlah || 1);
+    }, 0);
   }, [cartItems]);
 
   const value = {

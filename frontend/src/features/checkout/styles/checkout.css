@@ -1,77 +1,1089 @@
-.app {
+.cox-page {
   min-height: 100vh;
-  background: #FDFCF0;
-  display: flex;
-  flex-direction: column;
+  background:
+    radial-gradient(circle at 8% 4%, rgba(217, 95, 54, 0.15), transparent 30%),
+    radial-gradient(circle at 94% 10%, rgba(15, 93, 35, 0.13), transparent 34%),
+    linear-gradient(180deg, #fffaf4 0%, #f7faf1 48%, #f8f9f3 100%);
+  color: #172016;
+  overflow-x: hidden;
 }
 
-.main { flex: 1; }
-
-.container {
-  max-width: 1100px;
+.cox-container {
+  width: min(1180px, calc(100% - 42px));
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 36px 0 88px;
 }
 
-.page-header {
-  margin-bottom: 32px;
+.cox-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  margin-bottom: 22px;
+  padding: 30px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 197, 91, 0.34), transparent 34%),
+    linear-gradient(135deg, #0f5d23, #083d18 78%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  box-shadow: 0 24px 60px rgba(15, 93, 35, 0.18);
 }
 
-.page-title {
-  font-size: 36px;
-  font-weight: 800;
-  color: #1A2E1A;
-  margin-bottom: 6px;
+.cox-hero::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  right: -100px;
+  bottom: -120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.page-sub {
-  font-size: 14px;
-  color: #7a7a6a;
+.cox-hero-left,
+.cox-hero-card {
+  position: relative;
+  z-index: 2;
 }
 
-/* 2-column layout: 70% / 30% */
-.content-layout {
+.cox-back-link {
+  width: fit-content;
+  min-height: 36px;
+  padding: 0 13px;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.84rem;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(12px);
+}
+
+.cox-back-link:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.cox-hero-badge {
+  width: fit-content;
+  min-height: 36px;
+  padding: 0 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cox-hero h1 {
+  margin: 14px 0 8px;
+  color: #ffffff;
+  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  font-weight: 950;
+  line-height: 0.98;
+  letter-spacing: -0.065em;
+}
+
+.cox-hero p {
+  max-width: 640px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.75;
+}
+
+.cox-hero-card {
+  width: 265px;
+  padding: 22px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.cox-hero-card span {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
+.cox-hero-card strong {
+  display: block;
+  margin: 6px 0;
+  color: #ffffff;
+  font-size: 1.85rem;
+  font-weight: 950;
+}
+
+.cox-stepper {
+  margin-bottom: 24px;
+  padding: 15px;
   display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 28px;
-  align-items: flex-start;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(15, 93, 35, 0.1);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
 }
 
-.checkout-col {
+.cox-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0f5d23;
+  font-weight: 950;
+}
+
+.cox-step div {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #e8f7ec;
+  color: #0f5d23;
+}
+
+.cox-step i {
+  flex: 1;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(15, 93, 35, 0.16);
+}
+
+.cox-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 385px;
+  align-items: start;
+  gap: 30px;
+}
+
+.cox-left {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   min-width: 0;
 }
 
-/* Section card wrapper */
-.section-card {
-  background: #fff;
-  border: 1px solid #ece9d8;
-  border-radius: 16px;
-  padding: 24px;
+.cox-card,
+.cox-summary {
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 93, 35, 0.1);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.06);
 }
 
-.section-label {
+.cox-card {
+  padding: 22px;
+}
+
+.cox-card-head,
+.cox-summary-head {
+  margin-bottom: 18px;
   display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #7a7a6a;
-  margin-bottom: 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-@media (max-width: 900px) {
-  .content-layout {
+.cox-card-head span,
+.cox-summary-head span {
+  color: #d95f36;
+  font-size: 0.74rem;
+  font-weight: 950;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.cox-card-head h2,
+.cox-summary-head h2 {
+  margin: 4px 0 0;
+  color: #0f5d23;
+  font-size: 1.35rem;
+  font-weight: 950;
+}
+
+.cox-card-head > svg,
+.cox-summary-head > svg {
+  width: 48px;
+  height: 48px;
+  padding: 13px;
+  border-radius: 17px;
+  background: #e8f7ec;
+  color: #0f5d23;
+}
+
+.cox-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.cox-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cox-field.full {
+  grid-column: 1 / -1;
+}
+
+.cox-field span {
+  color: #687267;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.cox-field input,
+.cox-field textarea {
+  width: 100%;
+  border: 1px solid #dfe6d9;
+  outline: none;
+  border-radius: 16px;
+  background: #f8faf4;
+  color: #172016;
+  font-family: inherit;
+  font-size: 0.94rem;
+  font-weight: 800;
+  transition: 0.22s ease;
+}
+
+.cox-field input {
+  min-height: 50px;
+  padding: 0 14px;
+}
+
+.cox-field textarea {
+  resize: vertical;
+  padding: 14px;
+  line-height: 1.6;
+}
+
+.cox-field input:focus,
+.cox-field textarea:focus {
+  border-color: #0f5d23;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(15, 93, 35, 0.08);
+}
+
+.cox-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.cox-slot-grid button,
+.cox-payment-grid button {
+  border: 1px solid #dfe6d9;
+  background: #f8faf4;
+  color: #596257;
+  cursor: pointer;
+  transition: 0.22s ease;
+}
+
+.cox-slot-grid button {
+  min-height: 54px;
+  padding: 0 12px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 950;
+}
+
+.cox-slot-grid button.active,
+.cox-slot-grid button:hover {
+  background: #0f5d23;
+  border-color: #0f5d23;
+  color: #ffffff;
+  box-shadow: 0 14px 26px rgba(15, 93, 35, 0.16);
+}
+
+.cox-payment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.cox-payment-grid button {
+  min-height: 112px;
+  padding: 14px;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.cox-payment-grid button svg {
+  color: #0f5d23;
+}
+
+.cox-payment-grid button strong {
+  color: #172016;
+  font-size: 0.94rem;
+  font-weight: 950;
+}
+
+.cox-payment-grid button span {
+  color: #7b8478;
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-align: left;
+}
+
+.cox-payment-grid button.active,
+.cox-payment-grid button:hover {
+  background: #0f5d23;
+  border-color: #0f5d23;
+  box-shadow: 0 14px 26px rgba(15, 93, 35, 0.16);
+}
+
+.cox-payment-grid button.active svg,
+.cox-payment-grid button.active strong,
+.cox-payment-grid button.active span,
+.cox-payment-grid button:hover svg,
+.cox-payment-grid button:hover strong,
+.cox-payment-grid button:hover span {
+  color: #ffffff;
+}
+
+.cox-message {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fff4dd;
+  border: 1px solid rgba(217, 95, 54, 0.16);
+  color: #8a5a00;
+  font-weight: 850;
+}
+
+.cox-submit {
+  min-height: 58px;
+  border: none;
+  border-radius: 19px;
+  background: #0f5d23;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 950;
+  cursor: pointer;
+  box-shadow: 0 18px 34px rgba(15, 93, 35, 0.22);
+}
+
+.cox-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.cox-spin {
+  animation: coxSpin 0.8s linear infinite;
+}
+
+@keyframes coxSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cox-summary {
+  position: sticky;
+  top: 94px;
+  padding: 22px;
+}
+
+.cox-summary-items {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cox-empty-summary {
+  padding: 34px 18px;
+  text-align: center;
+  border-radius: 24px;
+  background: #f8faf4;
+  border: 1px dashed rgba(15, 93, 35, 0.22);
+  color: #0f5d23;
+}
+
+.cox-empty-summary h3 {
+  margin: 12px 0 6px;
+  color: #0f5d23;
+  font-weight: 950;
+}
+
+.cox-empty-summary p {
+  margin: 0 0 14px;
+  color: #697066;
+}
+
+.cox-empty-summary a {
+  min-height: 42px;
+  padding: 0 15px;
+  border-radius: 14px;
+  background: #0f5d23;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 950;
+}
+
+.cox-summary-item {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 20px;
+  background: #f8faf4;
+  border: 1px solid #edf0e8;
+}
+
+.cox-summary-item img {
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 17px;
+}
+
+.cox-summary-item-copy h4 {
+  margin: 0 0 4px;
+  color: #172016;
+  font-size: 0.92rem;
+  line-height: 1.25;
+  font-weight: 950;
+}
+
+.cox-summary-item-copy p {
+  margin: 0 0 9px;
+  color: #7b8478;
+  font-size: 0.78rem;
+  font-weight: 780;
+}
+
+.cox-summary-item > strong {
+  color: #d95f36;
+  font-size: 0.88rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.cox-mini-qty {
+  width: fit-content;
+  min-height: 30px;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #dfe6d9;
+}
+
+.cox-mini-qty button {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: #e8f7ec;
+  color: #0f5d23;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.cox-mini-qty span {
+  min-width: 28px;
+  text-align: center;
+  color: #172016;
+  font-size: 0.82rem;
+  font-weight: 950;
+}
+
+.cox-price-box {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #edf0e8;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cox-price-box div,
+.cox-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  color: #687267;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.cox-price-box strong {
+  color: #172016;
+}
+
+.cox-price-box .discount strong {
+  color: #0f8f3a;
+}
+
+.cox-total {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid #edf0e8;
+  align-items: center;
+}
+
+.cox-total span {
+  color: #0f5d23;
+  font-size: 1rem;
+  font-weight: 950;
+}
+
+.cox-total strong {
+  color: #d95f36;
+  font-size: 1.55rem;
+  font-weight: 950;
+}
+
+.cox-safe-note {
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #e8f7ec, #fff8e8);
+  color: #0f5d23;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cox-safe-note p {
+  margin: 0;
+  color: #536050;
+  line-height: 1.55;
+  font-size: 0.84rem;
+  font-weight: 780;
+}
+
+.cox-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  padding: 18px;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(6px);
+}
+
+.cox-payment-modal {
+  position: relative;
+  width: min(490px, 100%);
+  padding: 30px;
+  border-radius: 32px;
+  background: #ffffff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.26);
+  text-align: center;
+}
+
+.cox-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 13px;
+  background: #f3f5ef;
+  color: #596257;
+  cursor: pointer;
+}
+
+.cox-modal-badge {
+  width: fit-content;
+  min-height: 34px;
+  padding: 0 12px;
+  margin: 0 auto 12px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #fff0e8;
+  color: #d95f36;
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cox-payment-modal h2 {
+  margin: 0 0 8px;
+  color: #0f5d23;
+  font-size: 1.75rem;
+  font-weight: 950;
+}
+
+.cox-payment-modal p {
+  margin: 0;
+  color: #697066;
+  line-height: 1.6;
+}
+
+.cox-qr-box {
+  width: 286px;
+  height: 286px;
+  margin: 24px auto;
+  padding: 13px;
+  display: grid;
+  place-items: center;
+  border-radius: 28px;
+  background: #f8faf4;
+  border: 1px solid #edf0e8;
+}
+
+.cox-qr-box img {
+  width: 260px;
+  height: 260px;
+}
+
+.cox-modal-detail {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.cox-modal-detail div {
+  padding: 13px 14px;
+  border-radius: 16px;
+  background: #f8faf4;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #687267;
+  font-weight: 800;
+}
+
+.cox-modal-detail strong {
+  color: #0f5d23;
+}
+
+.cox-paid-btn {
+  width: 100%;
+  min-height: 52px;
+  border: none;
+  border-radius: 17px;
+  background: #0f5d23;
+  color: #ffffff;
+  font-weight: 950;
+  cursor: pointer;
+  box-shadow: 0 16px 30px rgba(15, 93, 35, 0.2);
+}
+
+@media (max-width: 1060px) {
+  .cox-layout {
     grid-template-columns: 1fr;
   }
-  .page-title { font-size: 28px; }
+
+  .cox-summary {
+    position: static;
+  }
+
+  .cox-payment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cox-slot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .cox-container {
+    width: min(100% - 28px, 1180px);
+    padding-top: 24px;
+  }
+
+  .cox-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 26px;
+    padding: 24px;
+  }
+
+  .cox-hero-card {
+    width: 100%;
+  }
+
+  .cox-stepper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cox-step i {
+    display: none;
+  }
+
+  .cox-form-grid,
+  .cox-payment-grid,
+  .cox-slot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cox-summary-item {
+    grid-template-columns: 62px 1fr;
+  }
+
+  .cox-summary-item > strong {
+    grid-column: 2;
+  }
 }
 
 @media (max-width: 480px) {
-  .container { padding: 24px 16px 100px; }
-  .page-title { font-size: 24px; }
+  .cox-hero h1 {
+    font-size: 2.35rem;
+  }
+
+  .cox-card,
+  .cox-summary,
+  .cox-payment-modal {
+    border-radius: 24px;
+  }
+
+  .cox-qr-box {
+    width: 244px;
+    height: 244px;
+  }
+
+  .cox-qr-box img {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* ================= PAYMENT SUCCESS ================= */
+
+.payment-success-page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  background:
+    radial-gradient(circle at top left,#ffe7d9,transparent 35%),
+    radial-gradient(circle at top right,#dff5e4,transparent 35%),
+    #f8faf7;
+}
+
+.payment-success-card{
+  width:100%;
+  max-width:700px;
+  background:#fff;
+  border-radius:32px;
+  padding:40px;
+  text-align:center;
+  box-shadow:0 25px 60px rgba(0,0,0,.08);
+}
+
+.payment-success-icon{
+  width:120px;
+  height:120px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  font-size:60px;
+  font-weight:900;
+  animation:popSuccess .6s ease;
+}
+
+@keyframes popSuccess{
+  0%{
+    transform:scale(.4);
+    opacity:0;
+  }
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+.payment-success-card span{
+  display:inline-block;
+  background:#ecfdf3;
+  color:#15803d;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:.85rem;
+  font-weight:900;
+}
+
+.payment-success-card h1{
+  margin:18px 0 10px;
+  color:#0f5d23;
+  font-size:2.3rem;
+}
+
+.payment-success-card p{
+  color:#647067;
+  line-height:1.7;
+}
+
+.payment-success-detail{
+  margin-top:28px;
+  padding:22px;
+  border-radius:24px;
+  background:#f8faf4;
+}
+
+.payment-success-detail div{
+  display:flex;
+  justify-content:space-between;
+  padding:14px 0;
+  border-bottom:1px solid #e7ece4;
+}
+
+.payment-success-detail div:last-child{
+  border-bottom:none;
+}
+
+.payment-success-detail strong{
+  color:#0f5d23;
+}
+
+.payment-success-actions{
+  margin-top:28px;
+  display:flex;
+  gap:14px;
+}
+
+.payment-history-btn,
+.payment-home-btn{
+  flex:1;
+  height:54px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  border-radius:16px;
+  font-weight:900;
+}
+
+.payment-history-btn{
+  background:#0f5d23;
+  color:#fff;
+}
+
+.payment-home-btn{
+  background:#fff0e8;
+  color:#d95f36;
+}
+
+.payment-history-btn:hover,
+.payment-home-btn:hover{
+  transform:translateY(-2px);
+  transition:.25s;
+}
+
+.cox-booking-date {
+  margin-bottom: 10px;
+}
+
+.cox-booking-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cox-booking-title svg {
+  color: #ff6b35;
+  margin-top: 3px;
+}
+
+.cox-booking-title h3 {
+  margin: 0;
+  color: #18251b;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.cox-booking-title p {
+  margin: 5px 0 0;
+  color: #7a857b;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cox-date-loading {
+  padding: 16px;
+  border-radius: 16px;
+  background: #f8faf5;
+  color: #6f7b70;
+  font-weight: 700;
+}
+
+.cox-date-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.cox-date-card {
+  min-height: 92px;
+  border: 1.5px solid #e2e8da;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #17251a;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cox-date-card:hover {
+  transform: translateY(-3px);
+  border-color: #ff6b35;
+  box-shadow: 0 14px 30px rgba(255, 107, 53, 0.16);
+}
+
+.cox-date-card span {
+  font-size: 12px;
+  font-weight: 800;
+  color: #7a857b;
+  text-transform: uppercase;
+}
+
+.cox-date-card strong {
+  font-size: 26px;
+  font-weight: 900;
+  color: #142117;
+  line-height: 1;
+}
+
+.cox-date-card small {
+  font-size: 12px;
+  font-weight: 800;
+  color: #ff6b35;
+  text-transform: uppercase;
+}
+
+.cox-date-card.active {
+  background: linear-gradient(135deg, #0f5d23, #43b65e);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 18px 36px rgba(15, 93, 35, 0.22);
+}
+
+.cox-date-card.active span,
+.cox-date-card.active strong,
+.cox-date-card.active small {
+  color: #fff;
+}
+
+.cox-date-card.disabled {
+  cursor: not-allowed;
+  background: #f1f1f1;
+  border-color: #dedede;
+  opacity: 0.65;
+  box-shadow: none;
+}
+
+.cox-date-card.disabled:hover {
+  transform: none;
+  border-color: #dedede;
+  box-shadow: none;
+}
+
+.cox-date-card.disabled strong,
+.cox-date-card.disabled span,
+.cox-date-card.disabled small {
+  color: #9a9a9a;
+}
+
+.cox-date-card em {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 900;
+  background: #d9534f;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.cox-selected-booking {
+  margin: 18px 0;
+  padding: 15px;
+  border-radius: 18px;
+  background: #fff7ef;
+  border: 1px solid #ffe0ca;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cox-selected-booking svg {
+  color: #ff6b35;
+  min-width: 18px;
+  margin-top: 2px;
+}
+
+.cox-selected-booking span {
+  display: block;
+  color: #7a857b;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.cox-selected-booking strong {
+  display: block;
+  color: #142117;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .cox-date-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .cox-date-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cox-date-card {
+    min-height: 82px;
+  }
 }

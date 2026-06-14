@@ -1,16 +1,21 @@
+// frontend/src/features/vendor-detail/components/Hero.jsx
+
 import {
   Star,
   MapPin,
   Clock3,
   Info,
   UtensilsCrossed,
+  ShieldCheck,
+  Flame,
+  Bike,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const heroContainer = {
   hidden: {
     opacity: 0,
-    y: 24,
+    y: 26,
   },
   show: {
     opacity: 1,
@@ -33,7 +38,7 @@ const heroItem = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.55,
+      duration: 0.5,
       ease: "easeOut",
     },
   },
@@ -42,85 +47,87 @@ const heroItem = {
 export default function Hero() {
   return (
     <motion.section
-      className="group relative h-[250px] overflow-hidden rounded-[30px] shadow-[0_18px_45px_rgba(0,0,0,0.16)] sm:h-[270px] lg:h-[290px]"
+      className="vendor-hero vendor-hero-pro"
       variants={heroContainer}
       initial="hidden"
       animate="show"
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&q=80')",
-        }}
-      />
+      <div className="vendor-hero-bg" />
+      <div className="vendor-hero-overlay" />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+      <motion.div
+        className="vendor-hero-float vendor-hero-float-one"
+        animate={{ y: [0, -14, 0], rotate: [0, 4, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Flame size={18} />
+        Hot Promo
+      </motion.div>
 
-      <div className="relative z-10 flex h-full flex-col justify-end p-6 text-white sm:p-7 lg:p-8">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <motion.div
-              variants={heroItem}
-              className="mb-3 flex flex-wrap items-center gap-2"
-            >
-              <span className="rounded-full bg-[#E56B49] px-3.5 py-1.5 text-[13px] font-bold text-white shadow-sm">
-                Partner
-              </span>
+      <motion.div
+        className="vendor-hero-float vendor-hero-float-two"
+        animate={{ y: [0, 12, 0], rotate: [0, -4, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Bike size={18} />
+        20-30 min
+      </motion.div>
 
-              <div className="flex items-center gap-1.5 rounded-full bg-white/20 px-3.5 py-1.5 backdrop-blur-md">
-                <Star
-                  size={15}
-                  className="text-[#FFD76A]"
-                  fill="currentColor"
-                />
-                <span className="text-[14px] font-bold">4.8</span>
-                <span className="text-[13px] font-medium text-white/90">
-                  (500+ ratings)
-                </span>
-              </div>
-            </motion.div>
+      <div className="vendor-hero-content">
+        <div className="vendor-hero-main">
+          <motion.div variants={heroItem} className="vendor-hero-badges">
+            <span className="vendor-partner-badge">
+              <ShieldCheck size={15} />
+              Verified Partner
+            </span>
 
-            <motion.h1
-              variants={heroItem}
-              className="mb-3 text-[30px] font-extrabold leading-none tracking-tight text-white sm:text-[36px] lg:text-[42px]"
-            >
-              Dapur Ananda
-            </motion.h1>
+            <span className="vendor-rating-badge">
+              <Star size={15} fill="currentColor" />
+              <strong>4.8</strong>
+              <small>(500+ ratings)</small>
+            </span>
+          </motion.div>
 
-            <motion.div
-              variants={heroItem}
-              className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[14px] font-semibold text-white/95 sm:text-[15px]"
-            >
-              <div className="flex items-center gap-1.5">
-                <Clock3 size={16} />
-                <span>20–30 min</span>
-              </div>
+          <motion.h1 variants={heroItem}>Dapur Ananda</motion.h1>
 
-              <div className="flex items-center gap-1.5">
-                <MapPin size={16} />
-                <span>1.2 km</span>
-              </div>
+          <motion.p variants={heroItem} className="vendor-hero-desc">
+            Sajian heritage Indonesia dengan rasa rumahan, plating modern, dan
+            paket lengkap yang cocok untuk makan siang, keluarga, atau meeting.
+          </motion.p>
 
-              <div className="flex items-center gap-1.5">
-                <UtensilsCrossed size={16} />
-                <span>Indonesian Heritage</span>
-              </div>
-            </motion.div>
-          </div>
+          <motion.div variants={heroItem} className="vendor-hero-meta">
+            <div>
+              <Clock3 size={17} />
+              <span>20–30 min</span>
+            </div>
+
+            <div>
+              <MapPin size={17} />
+              <span>1.2 km dari lokasi kamu</span>
+            </div>
+
+            <div>
+              <UtensilsCrossed size={17} />
+              <span>Indonesian Heritage</span>
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.div variants={heroItem} className="vendor-store-card-mini">
+          <span>Mulai dari</span>
+          <strong>Rp32k</strong>
+          <p>Free delivery untuk transaksi hari ini.</p>
 
           <motion.button
-            variants={heroItem}
             whileHover={{ y: -4, scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
             type="button"
-            className="inline-flex h-14 w-fit items-center justify-center gap-2 rounded-2xl bg-white px-6 text-[15px] font-bold text-[#184D2C] shadow-[0_12px_28px_rgba(0,0,0,0.18)] transition-all duration-300 hover:bg-[#F5F5EE]"
+            className="vendor-store-info-btn"
           >
             <Info size={19} />
-            <span>Store Info</span>
+            Store Info
           </motion.button>
-        </div>
+        </motion.div>
       </div>
     </motion.section>
   );
