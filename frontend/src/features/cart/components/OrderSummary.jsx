@@ -1,136 +1,147 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Tag, ChevronRight, Check } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import "./OrderSummary.css";
+import { Check, ChevronRight, ShieldCheck, Tag } from "lucide-react";
 
-function formatRp(num) {
-  return "Rp " + num.toLocaleString("id-ID");
+function formatRp(value) {
+  return "Rp " + Number(value || 0).toLocaleString("id-ID");
 }
 
 const DELIVERY_FEE = 12000;
 const SERVICE_FEE = 2000;
 const VOUCHER_DISCOUNT = 5000;
 
-export default function OrderSummary({ cartItems }) {
+export default function OrderSummary({ cartItems = [] }) {
   const [voucherApplied, setVoucherApplied] = useState(false);
 
-  const itemCount = cartItems.reduce((sum, item) => sum + item.qty, 0);
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.qty,
-    0
-  );
+  const itemCount = cartItems.reduce((sum, item) => {
+    return sum + Number(item.qty || item.jumlah || 1);
+  }, 0);
 
-  const discount = voucherApplied ? VOUCHER_DISCOUNT : 0;
-  const total = Math.max(
-    subtotal + DELIVERY_FEE + SERVICE_FEE - discount,
-    0
-  );
+  const subtotal = cartItems.reduce((sum, item) => {
+    return (
+      sum +
+      Number(item.price || item.harga || 0) *
+        Number(item.qty || item.jumlah || 1)
+    );
+  }, 0);
+
+  const discount =
+    voucherApplied && cartItems.length > 0 ? VOUCHER_DISCOUNT : 0;
+
+  const total = Math.max(subtotal + DELIVERY_FEE + SERVICE_FEE - discount, 0);
 
   return (
-    <aside className="order-summary-card">
-      <h2>Ringkasan Pesanan</h2>
-
-      <div className="summary-detail-list">
-        <div className="summary-detail-row">
-          <span>Subtotal ({itemCount} item)</span>
-
-          <motion.strong
-            key={subtotal}
-            initial={{ opacity: 0.6, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.22 }}
-          >
-            {formatRp(subtotal)}
-          </motion.strong>
+    <aside className="cart-summary">
+      <div className="cart-summary-head">
+        <div>
+          <span>ORDER SUMMARY</span>
+          <h2>Ringkasan Pesanan</h2>
         </div>
 
-        <div className="summary-detail-row">
+        <div className="cart-summary-icon">
+          <ShieldCheck size={22} />
+        </div>
+      </div>
+
+      <div className="cart-summary-items">
+        {cartItems.length === 0 ? (
+          <div className="cart-summary-empty">Belum ada item di keranjang.</div>
+        ) : (
+          cartItems.slice(0, 3).map((item) => {
+            const name = item.name || item.nama_menu || "Menu";
+            const qty = Number(item.qty || item.jumlah || 1);
+            const price = Number(item.price || item.harga || 0);
+
+            return (
+              <div className="cart-summary-mini" key={item.id || item.id_menu}>
+                <span>{qty}x</span>
+                <p>{name}</p>
+                <strong>{formatRp(price * qty)}</strong>
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      <div className="cart-summary-rows">
+        <div>
+          <span>Subtotal ({itemCount} item)</span>
+          <strong>{formatRp(subtotal)}</strong>
+        </div>
+
+        <div>
           <span>Ongkos Kirim</span>
           <strong>{formatRp(DELIVERY_FEE)}</strong>
         </div>
 
-        <div className="summary-detail-row">
+        <div>
           <span>Biaya Layanan</span>
           <strong>{formatRp(SERVICE_FEE)}</strong>
         </div>
 
         <AnimatePresence>
-          {voucherApplied && (
+          {discount > 0 && (
             <motion.div
-              className="summary-detail-row discount-row"
+              className="discount"
               initial={{ opacity: 0, height: 0, y: -6 }}
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -6 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
             >
               <span>Diskon Voucher</span>
-              <strong>- {formatRp(VOUCHER_DISCOUNT)}</strong>
+              <strong>- {formatRp(discount)}</strong>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      <div className="summary-total-row">
+      <button
+        type="button"
+        className={`cart-voucher ${voucherApplied ? "active" : ""}`}
+        onClick={() => setVoucherApplied((prev) => !prev)}
+        disabled={cartItems.length === 0}
+      >
+        <div>
+          <span>
+            {voucherApplied ? <Check size={17} /> : <Tag size={17} />}
+          </span>
+
+          <p>
+            {voucherApplied
+              ? "Voucher berhasil dipakai"
+              : "Pakai voucher hemat Rp5.000"}
+          </p>
+        </div>
+
+        <ChevronRight size={18} />
+      </button>
+
+      <div className="cart-total">
         <span>Total</span>
 
         <motion.strong
           key={total}
-          initial={{ opacity: 0.7, scale: 0.96 }}
+          initial={{ opacity: 0.65, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.25 }}
         >
           {formatRp(total)}
         </motion.strong>
       </div>
 
-      <motion.button
-        type="button"
-        className={`voucher-box ${voucherApplied ? "voucher-active" : ""}`}
-        onClick={() => setVoucherApplied((prev) => !prev)}
-        aria-pressed={voucherApplied}
-        whileHover={{ y: -2 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <div className="voucher-content">
-          <motion.div
-            className="voucher-icon"
-            animate={{
-              rotate: voucherApplied ? 0 : -8,
-              scale: voucherApplied ? 1.08 : 1,
-            }}
-            transition={{ duration: 0.25 }}
-          >
-            {voucherApplied ? <Check size={18} /> : <Tag size={18} />}
-          </motion.div>
-
-          <span>
-            {voucherApplied
-              ? "Voucher berhasil diterapkan"
-              : "Hemat Rp 5.000 dengan voucher"}
-          </span>
-        </div>
-
-        <ChevronRight size={18} />
-      </motion.button>
-
       <motion.div
-        whileHover={cartItems.length > 0 ? { y: -2 } : {}}
+        whileHover={cartItems.length > 0 ? { y: -3 } : {}}
         whileTap={cartItems.length > 0 ? { scale: 0.98 } : {}}
       >
         <Link
           to="/checkout"
-          className={`checkout-link ${
-            cartItems.length === 0 ? "checkout-disabled" : ""
-          }`}
+          className={`cart-checkout ${cartItems.length === 0 ? "disabled" : ""}`}
         >
           Lanjut ke Checkout
         </Link>
       </motion.div>
 
-      <p className="summary-terms">
-        Dengan menekan tombol, Anda setuju dengan{" "}
-        <a href="#">Syarat &amp; Ketentuan</a> kami.
+      <p className="cart-terms">
+        Pembayaran aman. Harga sudah termasuk estimasi biaya layanan Foodora.
       </p>
     </aside>
   );

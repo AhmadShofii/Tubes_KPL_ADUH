@@ -1,4 +1,4 @@
-import { Mail, MessageCircle } from "lucide-react";
+// frontend/src/features/vendor-detail/components/Footer.jsx
 
 export default function Footer() {
   return (
@@ -14,6 +14,7 @@ export default function Footer() {
 
         <div className="vendor-detail-footer-column">
           <h4>Explore</h4>
+
           <ul>
             <li>About Us</li>
             <li>Partner with Us</li>
@@ -23,6 +24,7 @@ export default function Footer() {
 
         <div className="vendor-detail-footer-column">
           <h4>Legal</h4>
+
           <ul>
             <li>Terms of Service</li>
             <li>Privacy Policy</li>
@@ -31,22 +33,16 @@ export default function Footer() {
 
         <div className="vendor-detail-footer-column">
           <h4>Contact</h4>
+
           <ul>
-            <li>
-              <Mail size={16} />
-              support@foodora.id
-            </li>
-            <li>
-              <MessageCircle size={16} />
-              WhatsApp Business
-            </li>
+            <li>support@foodora.id</li>
+            <li>WhatsApp Business</li>
           </ul>
         </div>
       </div>
 
       <div className="vendor-detail-footer-bottom">
-        © {new Date().getFullYear()} Foodora Indonesia. Fresh Heritage.
-        Delivered.
+        © 2024 Foodora Indonesia. Fresh Heritage. Delivered.
       </div>
     </footer>
   );

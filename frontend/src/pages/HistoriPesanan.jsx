@@ -1,4 +1,7 @@
+import { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "../styles/HistoriPesanan.css";
+
 import {
   FaInstagram,
   FaEnvelope,
@@ -7,153 +10,304 @@ import {
   FaCheckCircle,
   FaTimesCircle,
   FaClock,
+  FaTruck,
+  FaReceipt,
+  FaRedoAlt,
+  FaEye,
+  FaUtensils,
+  FaCalendarAlt,
+  FaWallet,
 } from "react-icons/fa";
 
+const orders = [
+  {
+    id: 1,
+    name: "Nasi Kuning Seraya",
+    code: "#FD-66512",
+    items: "2 Items",
+    price: "Rp 125.000",
+    status: "Selesai",
+    date: "05 Okt 2025",
+    payment: "QRIS",
+    vendor: "Dapur Seraya",
+    image:
+      "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=800",
+  },
+  {
+    id: 2,
+    name: "Ayam Kremes",
+    code: "#FD-66513",
+    items: "2 Items",
+    price: "Rp 160.000",
+    status: "Diproses",
+    date: "01 Okt 2025",
+    payment: "GoPay",
+    vendor: "Ayam Kremes Bu Sari",
+    image:
+      "https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=800",
+  },
+  {
+    id: 3,
+    name: "Tahu Kupat Minah",
+    code: "#FD-44201",
+    items: "1 Items",
+    price: "Rp 90.000",
+    status: "Dibatalkan",
+    date: "20 Agu 2025",
+    payment: "DANA",
+    vendor: "Tahu Kupat Minah",
+    image:
+      "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=800",
+  },
+  {
+    id: 4,
+    name: "Nasi Goreng Ayam Soraya",
+    code: "#FD-33109",
+    items: "4 Items",
+    price: "Rp 130.000",
+    status: "Selesai",
+    date: "04 Agu 2025",
+    payment: "Bank Transfer",
+    vendor: "Nasi Goreng Soraya",
+    image:
+      "https://images.unsplash.com/photo-1604908176997-431dcced9d9b?q=80&w=800",
+  },
+];
+
+const filters = [
+  {
+    label: "Semua",
+    icon: FaReceipt,
+  },
+  {
+    label: "Selesai",
+    icon: FaCheckCircle,
+  },
+  {
+    label: "Diproses",
+    icon: FaClock,
+  },
+  {
+    label: "Dibatalkan",
+    icon: FaTimesCircle,
+  },
+];
+
+const statusConfig = {
+  Selesai: {
+    icon: FaCheckCircle,
+    className: "hp-status-done",
+    text: "Pesanan Selesai",
+  },
+  Diproses: {
+    icon: FaClock,
+    className: "hp-status-process",
+    text: "Sedang Diproses",
+  },
+  Dibatalkan: {
+    icon: FaTimesCircle,
+    className: "hp-status-cancel",
+    text: "Pesanan Dibatalkan",
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 26,
+    scale: 0.98,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+  },
+  exit: {
+    opacity: 0,
+    y: 18,
+    scale: 0.98,
+  },
+};
+
 function HistoriPesanan() {
-  const orders = [
-    {
-      id: 1,
-      name: "Nasi Kuning Seraya",
-      code: "#FD-66512",
-      items: "2 Items",
-      price: "Rp 125.000",
-      status: "Selesai",
-      date: "05 Okt 2025",
-      image:
-        "https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=800",
-    },
-    {
-      id: 2,
-      name: "Ayam Kremes",
-      code: "#FD-66512",
-      items: "2 Items",
-      price: "Rp 160.000",
-      status: "Selesai",
-      date: "01 Okt 2025",
-      image:
-        "https://images.unsplash.com/photo-1562967916-eb82221dfb92?q=80&w=800",
-    },
-    {
-      id: 3,
-      name: "Tahu Kupat Minah",
-      code: "#FD-44201",
-      items: "1 Items",
-      price: "Rp 90.000",
-      status: "Dibatalkan",
-      date: "20 August 2025",
-      image:
-        "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=800",
-    },
-    {
-      id: 4,
-      name: "Nasi Goreng Ayam Soraya",
-      code: "#FD-33109",
-      items: "4 Items",
-      price: "Rp 130.000",
-      status: "Selesai",
-      date: "4 August 2025",
-      image:
-        "https://images.unsplash.com/photo-1604908176997-431dcced9d9b?q=80&w=800",
-    },
-  ];
+  const [activeFilter, setActiveFilter] = useState("Semua");
+
+  const filteredOrders = useMemo(() => {
+    if (activeFilter === "Semua") return orders;
+
+    return orders.filter((order) => order.status === activeFilter);
+  }, [activeFilter]);
 
   const lastOrder = orders[0];
 
+  const totalSelesai = orders.filter((order) => order.status === "Selesai").length;
+  const totalDiproses = orders.filter((order) => order.status === "Diproses").length;
+  const totalDibatalkan = orders.filter(
+    (order) => order.status === "Dibatalkan"
+  ).length;
+
   return (
-    <div className="history-page">
-      <main className="history-main">
-        <h1>Riwayat Pesanan</h1>
+    <div className="hp-page">
+      <main className="hp-main">
+        <motion.section
+          className="hp-hero"
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55 }}
+        >
+          <div>
+            <span className="hp-hero-badge">ORDER HISTORY</span>
 
-        <div className="filter-wrapper">
-          <button className="filter-btn active-filter">Semua</button>
+            <h1>Riwayat Pesanan</h1>
 
-          <button className="filter-btn">
-            <FaCheckCircle className="done-icon" />
-            Selesai
-          </button>
+            <p>
+              Pantau pesananmu, cek status transaksi, dan pesan kembali menu
+              favorit Foodora dengan lebih mudah.
+            </p>
+          </div>
 
-          <button className="filter-btn">
-            <FaClock className="process-icon" />
-            Diproses
-          </button>
+          <div className="hp-hero-stats">
+            <div>
+              <strong>{orders.length}</strong>
+              <span>Total Pesanan</span>
+            </div>
 
-          <button className="filter-btn">
-            <FaTimesCircle className="cancel-icon" />
-            Dibatalkan
-          </button>
-        </div>
+            <div>
+              <strong>{totalSelesai}</strong>
+              <span>Selesai</span>
+            </div>
 
-        <div className="history-content">
-          <section className="order-list">
-            {orders.map((order) => (
-              <div className="order-card" key={order.id}>
-                <div className="order-left">
-                  <img src={order.image} alt={order.name} />
+            <div>
+              <strong>{totalDiproses}</strong>
+              <span>Diproses</span>
+            </div>
 
-                  <div className="order-info">
-                    <h2>{order.name}</h2>
+            <div>
+              <strong>{totalDibatalkan}</strong>
+              <span>Dibatalkan</span>
+            </div>
+          </div>
+        </motion.section>
 
-                    <p className="order-code">
-                      ID: {order.code} • {order.items}
-                    </p>
+        <motion.div
+          className="hp-filter-wrapper"
+          initial={{ opacity: 0, y: 22 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, delay: 0.1 }}
+        >
+          {filters.map((filter) => {
+            const Icon = filter.icon;
+            const active = activeFilter === filter.label;
 
-                    <div className="order-meta">
-                      <span className="order-price">{order.price}</span>
-                      <span className="dot">•</span>
+            return (
+              <button
+                key={filter.label}
+                type="button"
+                className={`hp-filter-btn ${active ? "active" : ""}`}
+                onClick={() => setActiveFilter(filter.label)}
+              >
+                <Icon />
+                {filter.label}
+              </button>
+            );
+          })}
+        </motion.div>
 
-                      <span
-                        className={
-                          order.status === "Dibatalkan"
-                            ? "status-cancel"
-                            : "status-done"
-                        }
-                      >
-                        {order.status}
-                      </span>
-                    </div>
+        <div className="hp-content">
+          <section className="hp-order-list">
+            <AnimatePresence mode="popLayout">
+              {filteredOrders.length === 0 ? (
+                <motion.div
+                  className="hp-empty-state"
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 24 }}
+                >
+                  <div>
+                    <FaReceipt />
                   </div>
-                </div>
 
-                <div className="order-right">
-                  <p className="order-date">{order.date}</p>
+                  <h3>Belum ada pesanan</h3>
 
-                  <div className="order-actions">
-                    <button>Pesan lagi</button>
-                    <button>Lihat</button>
-                  </div>
-                </div>
-              </div>
-            ))}
+                  <p>
+                    Tidak ada pesanan dengan status{" "}
+                    <strong>{activeFilter}</strong>.
+                  </p>
+                </motion.div>
+              ) : (
+                filteredOrders.map((order, index) => (
+                  <OrderCard key={order.id} order={order} index={index} />
+                ))
+              )}
+            </AnimatePresence>
           </section>
 
-          <aside className="summary-card">
-            <span className="summary-badge">TERAKHIR DIPESAN</span>
+          <motion.aside
+            className="hp-summary-card"
+            initial={{ opacity: 0, x: 34 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.55, delay: 0.2 }}
+          >
+            <span className="hp-summary-badge">TERAKHIR DIPESAN</span>
+
+            <div className="hp-summary-image">
+              <img src={lastOrder.image} alt={lastOrder.name} />
+            </div>
 
             <h2>{lastOrder.name}</h2>
 
-            <p className="summary-id">ID: {lastOrder.code}</p>
+            <p className="hp-summary-id">ID: {lastOrder.code}</p>
 
-            <div className="summary-row">
+            <div className="hp-summary-row">
               <p>Status</p>
               <span>Selesai</span>
             </div>
 
-            <div className="summary-row">
+            <div className="hp-summary-row">
+              <p>Pembayaran</p>
+              <strong>{lastOrder.payment}</strong>
+            </div>
+
+            <div className="hp-summary-row">
               <p>Total</p>
               <strong>{lastOrder.price}</strong>
             </div>
 
-            <button className="detail-btn">
+            <div className="hp-progress">
+              <div className="active">
+                <FaReceipt />
+              </div>
+
+              <span></span>
+
+              <div className="active">
+                <FaUtensils />
+              </div>
+
+              <span></span>
+
+              <div className="active">
+                <FaTruck />
+              </div>
+
+              <span></span>
+
+              <div className="active">
+                <FaCheckCircle />
+              </div>
+            </div>
+
+            <button className="hp-detail-btn">
               Lihat Detail
               <FaArrowRight />
             </button>
-          </aside>
+          </motion.aside>
         </div>
       </main>
 
-      <footer className="history-footer">
-        <div className="footer-top">
-          <div className="footer-brand">
+      <footer className="hp-footer">
+        <div className="hp-footer-top">
+          <div className="hp-footer-brand">
             <h3>Foodora</h3>
 
             <p>
@@ -161,21 +315,21 @@ function HistoriPesanan() {
               fokus pada kualitas dan kepuasan pelanggan.
             </p>
 
-            <div className="footer-social">
+            <div className="hp-footer-social">
               <FaInstagram />
               <FaEnvelope />
               <FaAt />
             </div>
           </div>
 
-          <div className="footer-col">
+          <div className="hp-footer-col">
             <h4>PERUSAHAAN</h4>
             <p>About Us</p>
             <p>Partner with Us</p>
             <p>Career</p>
           </div>
 
-          <div className="footer-col">
+          <div className="hp-footer-col">
             <h4>BANTUAN</h4>
             <p>Help Center</p>
             <p>Contact</p>
@@ -183,12 +337,12 @@ function HistoriPesanan() {
             <p>Terms of Service</p>
           </div>
 
-          <div className="footer-col subscribe">
+          <div className="hp-footer-col hp-subscribe">
             <h4>BERLANGGANAN</h4>
 
             <p>Dapatkan info promo dan menu terbaru setiap minggu.</p>
 
-            <div className="subscribe-box">
+            <div className="hp-subscribe-box">
               <input type="email" placeholder="Email Anda" />
               <button>
                 <FaArrowRight />
@@ -197,7 +351,7 @@ function HistoriPesanan() {
           </div>
         </div>
 
-        <div className="history-footer-bottom">
+        <div className="hp-footer-bottom">
           © 2024 Foodora Indonesia. Fresh Heritage. Delivered.
         </div>
       </footer>
@@ -205,4 +359,112 @@ function HistoriPesanan() {
   );
 }
 
-export default HistoriPesanan;
+function OrderCard({ order, index }) {
+  const config = statusConfig[order.status];
+  const StatusIcon = config.icon;
+
+  return (
+    <motion.article
+      layout
+      className="hp-order-card"
+      variants={cardVariants}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+      transition={{
+        duration: 0.4,
+        delay: index * 0.06,
+      }}
+      whileHover={{
+        y: -6,
+        transition: { duration: 0.2 },
+      }}
+    >
+      <div className="hp-order-image">
+        <img src={order.image} alt={order.name} />
+
+        <span className={config.className}>
+          <StatusIcon />
+          {order.status}
+        </span>
+      </div>
+
+      <div className="hp-order-body">
+        <div className="hp-order-top">
+          <div>
+            <h2>{order.name}</h2>
+
+            <p className="hp-order-vendor">
+              <FaUtensils />
+              {order.vendor}
+            </p>
+          </div>
+
+          <div className="hp-order-price">{order.price}</div>
+        </div>
+
+        <div className="hp-order-meta">
+          <span>
+            <FaReceipt />
+            {order.code}
+          </span>
+
+          <span>
+            <FaCalendarAlt />
+            {order.date}
+          </span>
+
+          <span>
+            <FaWallet />
+            {order.payment}
+          </span>
+
+          <span>{order.items}</span>
+        </div>
+
+        <div className="hp-mini-timeline">
+          <div className="active"></div>
+          <span></span>
+          <div
+            className={
+              order.status === "Diproses" ||
+              order.status === "Selesai" ||
+              order.status === "Dibatalkan"
+                ? "active"
+                : ""
+            }
+          ></div>
+          <span></span>
+          <div
+            className={
+              order.status === "Selesai" || order.status === "Dibatalkan"
+                ? "active"
+                : ""
+            }
+          ></div>
+        </div>
+
+        <div className="hp-order-bottom">
+          <p className={config.className}>
+            <StatusIcon />
+            {config.text}
+          </p>
+
+          <div className="hp-order-actions">
+            <button type="button" className="hp-reorder-btn">
+              <FaRedoAlt />
+              Pesan Lagi
+            </button>
+
+            <button type="button" className="hp-view-btn">
+              <FaEye />
+              Lihat
+            </button>
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+export { default } from "./History";

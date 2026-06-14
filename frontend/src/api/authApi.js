@@ -72,6 +72,10 @@ export function getMenuByVendor(idVendor) {
   return request(`/vendors/${idVendor}/menu`);
 }
 
+export function getBookedDates() {
+  return request("/pesanan/booked-dates");
+}
+
 export function createPesanan(payload) {
   return request("/pesanan", {
     method: "POST",

@@ -1,61 +1,79 @@
-import FoodIcon from './FoodIcon'
-import './OrderSummary.css'
-
 function formatRp(num) {
-  return 'Rp ' + num.toLocaleString('id-ID')
+  return "Rp " + Number(num || 0).toLocaleString("id-ID");
 }
 
-export default function OrderSummary({ items, subtotal, deliveryFee, serviceFee, total }) {
+export default function OrderSummary({
+  items = [],
+  subtotal = 0,
+  deliveryFee = 0,
+  serviceFee = 0,
+  total = 0,
+}) {
   return (
-    <aside className="order-summary">
-      <h2 className="summary-title">Order Summary</h2>
-
-      {/* Item list dengan gambar mini */}
-      <div className="summary-items">
-        {items.map(item => (
-          <div key={item.id} className="summary-item">
-            <FoodIcon size={44} />
-            <div className="summary-item-info">
-              <span className="summary-item-name">{item.name}</span>
-              <span className="summary-item-desc">{item.desc}</span>
-            </div>
-            <span className="summary-item-price">{formatRp(item.price)}</span>
-          </div>
-        ))}
+    <aside className="order-summary checkout-summary-pro">
+      <div className="summary-head-pro">
+        <div>
+          <span>ORDER SUMMARY</span>
+          <h2 className="summary-title">Ringkasan Pesanan</h2>
+        </div>
+        <strong>{items.length}</strong>
       </div>
 
-      <div className="summary-divider" />
+      <div className="summary-items">
+        {items.length === 0 ? (
+          <div className="summary-empty summary-empty-pro">
+            <p>Belum ada item di keranjang.</p>
+          </div>
+        ) : (
+          items.map((item) => {
+            const itemName = item.name || item.nama_menu || "Menu";
+            const itemQty = item.qty || item.jumlah || 1;
+            const itemPrice = item.price || item.harga || 0;
 
-      {/* Kalkulasi */}
+            return (
+              <div className="summary-item summary-item-pro" key={item.id || item.id_menu}>
+                <div className="summary-item-thumb">
+                  {item.image ? <img src={item.image} alt={itemName} /> : <span>{itemName.charAt(0)}</span>}
+                </div>
+
+                <div className="summary-item-copy">
+                  <h4>{itemName}</h4>
+                  <p>{itemQty}x item</p>
+                </div>
+
+                <strong>{formatRp(itemPrice * itemQty)}</strong>
+              </div>
+            );
+          })
+        )}
+      </div>
+
       <div className="summary-rows">
         <div className="summary-row">
           <span>Subtotal</span>
-          <span>{formatRp(subtotal)}</span>
+          <strong>{formatRp(subtotal)}</strong>
         </div>
+
         <div className="summary-row">
-          <span>Delivery Fee</span>
-          <span>{formatRp(deliveryFee)}</span>
+          <span>Ongkos Kirim</span>
+          <strong>{formatRp(deliveryFee)}</strong>
         </div>
+
         <div className="summary-row">
-          <span>Service Fee</span>
-          <span>{formatRp(serviceFee)}</span>
+          <span>Biaya Layanan</span>
+          <strong>{formatRp(serviceFee)}</strong>
         </div>
       </div>
 
       <div className="summary-total">
         <span>Total</span>
-        <span className="total-amount">{formatRp(total)}</span>
+        <strong>{formatRp(total)}</strong>
       </div>
 
-      <button className="order-btn">Buat Pesanan</button>
-
-      <div className="secure-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="13" height="13">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-        </svg>
-        Secure Checkout with 256-bit SSL
-      </div>
+      <p className="summary-note summary-note-pro">
+        Pilih metode pembayaran di sebelah kiri, lalu tekan tombol{" "}
+        <strong>Buat Pesanan</strong>. Transaksi kamu diamankan oleh Foodora.
+      </p>
     </aside>
-  )
+  );
 }

@@ -1,110 +1,89 @@
-import { Trash2, Minus, Plus } from "lucide-react";
+import { Minus, Plus, Trash2, Flame } from "lucide-react";
 import { motion } from "framer-motion";
 
-function formatRp(num) {
-  return "Rp " + num.toLocaleString("id-ID");
+function formatRp(value) {
+  return "Rp " + Number(value || 0).toLocaleString("id-ID");
 }
 
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-    y: 22,
-    scale: 0.98,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.45,
-      ease: "easeOut",
-    },
-  },
-};
-
 export default function CartItem({ item, onUpdateQty, onDelete }) {
+  const id = item.id;
+  const name = item.name || item.nama_menu || "Menu Foodora";
+  const desc = item.desc || item.description || "Menu pilihan dari Foodora.";
+  const price = Number(item.price || item.harga || 0);
+  const qty = Number(item.qty || item.jumlah || 1);
+  const image =
+    item.image ||
+    item.img ||
+    "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=900&auto=format&fit=crop";
+
+  const itemTotal = price * qty;
+
   return (
     <motion.article
       layout
-      variants={itemVariants}
-      initial="hidden"
-      animate="show"
-      exit={{
-        opacity: 0,
-        x: -28,
-        scale: 0.97,
-        transition: {
-          duration: 0.32,
-          ease: "easeInOut",
-        },
-      }}
-      whileHover={{
-        y: -3,
-        transition: { duration: 0.22 },
-      }}
-      className="cart-item-card"
+      className="cart-item"
+      initial={{ opacity: 0, y: 18, scale: 0.98 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, x: -28, scale: 0.96 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
+      whileHover={{ y: -4 }}
     >
       <div className="cart-item-image">
-        <img src={item.image} alt={item.name} />
+        <img src={image} alt={name} />
+
+        <span>
+          <Flame size={13} /> Fresh
+        </span>
       </div>
 
-      <div className="cart-item-content">
+      <div className="cart-item-body">
         <div className="cart-item-top">
-          <div className="cart-item-info">
-            <h3>{item.name}</h3>
-            <p>{item.desc}</p>
+          <div>
+            <h3>{name}</h3>
+            <p>{desc}</p>
           </div>
 
           <motion.button
             type="button"
-            className="cart-delete-button"
-            onClick={() => onDelete(item.id)}
-            aria-label={`Hapus ${item.name}`}
-            whileHover={{ scale: 1.08, rotate: 4 }}
-            whileTap={{ scale: 0.92 }}
+            className="cart-delete"
+            onClick={() => onDelete(id)}
+            aria-label={`Hapus ${name}`}
+            whileHover={{ rotate: 5, scale: 1.08 }}
+            whileTap={{ scale: 0.9 }}
           >
             <Trash2 size={18} />
           </motion.button>
         </div>
 
         <div className="cart-item-bottom">
-          <motion.span
-            key={item.qty}
-            className="cart-item-price"
-            initial={{ opacity: 0.7, y: 3 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {formatRp(item.price)}
-          </motion.span>
-
-          <div className="cart-qty-control">
-            <motion.button
-              type="button"
-              onClick={() => onUpdateQty(item.id, item.qty - 1)}
-              aria-label="Kurangi jumlah"
-              whileTap={{ scale: 0.86 }}
+          <div className="cart-price-group">
+            <motion.strong
+              key={itemTotal}
+              initial={{ opacity: 0.6, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
             >
+              {formatRp(itemTotal)}
+            </motion.strong>
+
+            <small>{formatRp(price)} / item</small>
+          </div>
+
+          <div className="cart-qty">
+            <button type="button" onClick={() => onUpdateQty(id, qty - 1)}>
               <Minus size={16} />
-            </motion.button>
+            </button>
 
             <motion.span
-              key={item.qty}
-              initial={{ scale: 0.8, opacity: 0.5 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.22 }}
+              key={qty}
+              initial={{ scale: 0.7 }}
+              animate={{ scale: 1 }}
             >
-              {item.qty}
+              {qty}
             </motion.span>
 
-            <motion.button
-              type="button"
-              onClick={() => onUpdateQty(item.id, item.qty + 1)}
-              aria-label="Tambah jumlah"
-              whileTap={{ scale: 0.86 }}
-            >
+            <button type="button" onClick={() => onUpdateQty(id, qty + 1)}>
               <Plus size={16} />
-            </motion.button>
+            </button>
           </div>
         </div>
       </div>
