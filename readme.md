@@ -2,37 +2,39 @@
 
 ### Tugas Besar Konstruksi Perangkat Lunak
 
-Foodora Catering App adalah aplikasi pemesanan katering berbasis web yang dibuat untuk memudahkan pengguna dalam melihat vendor makanan, memilih menu, melakukan pemesanan, memilih tanggal booking, serta menyelesaikan pembayaran melalui QRIS.
+Foodora Catering App adalah aplikasi pemesanan katering berbasis web yang memudahkan pengguna dalam melihat daftar vendor, memilih menu makanan, memasukkan pesanan ke keranjang, memilih tanggal booking, melakukan pembayaran, serta melihat histori pesanan.
 
-Project ini dikembangkan menggunakan **React.js** sebagai frontend, **Node.js + Express.js** sebagai backend, dan **MySQL** sebagai database. Selain membangun fitur utama aplikasi, project ini juga menerapkan beberapa teknik konstruksi perangkat lunak seperti **Automata**, **Table Driven Construction**, **Parameterization / Generic**, **Runtime Configuration**, **Code Reuse Library**, dan **API**.
+Project ini dikembangkan menggunakan **React.js** sebagai frontend, **Node.js + Express.js** sebagai backend, dan **MySQL** sebagai database. Selain fitur utama aplikasi, project ini juga menerapkan teknik konstruksi perangkat lunak seperti **Automata**, **Table Driven Construction**, **Parameterization / Generic**, **Runtime Configuration**, **Code Reuse Library**, **API**, serta menerapkan **Unit Testing**, **Performance Testing**, dan **Secure Coding Practice**.
 
 ---
 
-## 📌 Daftar Isi
+# 📌 Daftar Isi
 
 * [Latar Belakang](#-latar-belakang)
 * [Tujuan Project](#-tujuan-project)
 * [Pembagian Tugas](#-pembagian-tugas)
-* [Teknik Konstruksi yang Digunakan](#-teknik-konstruksi-yang-digunakan)
 * [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
 * [Struktur Folder](#-struktur-folder)
 * [Fitur Aplikasi](#-fitur-aplikasi)
-* [Penerapan Teknik Konstruksi](#-penerapan-teknik-konstruksi)
-* [Clean Code](#-clean-code)
+* [Teknik Konstruksi Perangkat Lunak](#-teknik-konstruksi-perangkat-lunak)
 * [Design Pattern](#-design-pattern)
+* [Clean Code](#-clean-code)
+* [Unit Testing](#-unit-testing)
+* [Performance Testing](#-performance-testing)
+* [Secure Coding Practice](#-secure-coding-practice)
 * [Cara Menjalankan Project](#-cara-menjalankan-project)
-* [Cara Push ke Branch](#-cara-push-ke-branch)
+* [Cara Menjalankan Testing](#-cara-menjalankan-testing)
 * [Kesimpulan](#-kesimpulan)
 
 ---
 
 # 📖 Latar Belakang
 
-Dalam kehidupan sehari-hari, kebutuhan terhadap layanan katering semakin meningkat, terutama untuk acara keluarga, kantor, sekolah, dan kegiatan lainnya. Namun, proses pemesanan katering secara manual sering kali kurang efisien karena pengguna harus menghubungi vendor satu per satu, menanyakan menu, harga, jadwal ketersediaan, hingga melakukan konfirmasi pembayaran secara terpisah.
+Kebutuhan terhadap layanan katering semakin meningkat, baik untuk acara keluarga, sekolah, kantor, maupun kegiatan lainnya. Namun, proses pemesanan katering secara manual sering kali kurang efisien karena pengguna harus menghubungi vendor satu per satu, menanyakan menu, harga, jadwal, hingga melakukan pembayaran secara terpisah.
 
-Oleh karena itu, dibuatlah **Foodora Catering App** sebagai aplikasi berbasis web yang membantu pengguna dalam melakukan pemesanan katering secara lebih mudah dan terstruktur. Melalui aplikasi ini, pengguna dapat melihat daftar vendor, memilih menu, memasukkan pesanan ke keranjang, memilih tanggal booking, melakukan pembayaran, serta melihat histori pesanan.
+Oleh karena itu, dibuatlah **Foodora Catering App** sebagai aplikasi berbasis web yang membantu pengguna melakukan pemesanan katering secara lebih mudah dan terstruktur. Melalui aplikasi ini, pengguna dapat melihat daftar vendor, memilih menu, menambahkan menu ke keranjang, memilih tanggal booking, melakukan pembayaran, dan melihat histori pesanan.
 
-Aplikasi ini juga dibuat sebagai implementasi dari materi **Konstruksi Perangkat Lunak**, khususnya dalam penerapan teknik konstruksi kode, pemanfaatan library, penggunaan API, konfigurasi runtime, serta penerapan design pattern.
+Project ini juga dibuat sebagai implementasi dari mata kuliah **Konstruksi Perangkat Lunak**, khususnya dalam penerapan teknik konstruksi kode, penggunaan API, runtime configuration, code reuse, clean code, design pattern, testing, dan secure coding.
 
 ---
 
@@ -41,19 +43,19 @@ Aplikasi ini juga dibuat sebagai implementasi dari materi **Konstruksi Perangkat
 Tujuan dari pembuatan aplikasi ini adalah:
 
 1. Membuat aplikasi pemesanan katering berbasis web.
-2. Memudahkan pengguna dalam memilih vendor dan menu makanan.
+2. Memudahkan pengguna dalam melihat vendor dan memilih menu.
 3. Menyediakan fitur keranjang dan checkout.
-4. Menambahkan fitur booking tanggal agar tanggal yang sudah dipesan tidak dapat dipilih kembali.
-5. Menyediakan fitur pembayaran QRIS dan halaman konfirmasi pembayaran.
-6. Menyediakan fitur login, register, forgot password, OTP, dan reset password.
-7. Menerapkan teknik konstruksi perangkat lunak pada project nyata.
-8. Menerapkan prinsip clean code dan design pattern agar kode lebih rapi dan mudah dikembangkan.
+4. Menyediakan fitur booking tanggal agar tanggal yang sudah dipesan tidak dapat dipilih ulang.
+5. Menyediakan fitur pembayaran QRIS dan halaman sukses pembayaran.
+6. Menyediakan fitur autentikasi seperti register, login, forgot password, OTP, dan reset password.
+7. Mengintegrasikan frontend dengan backend menggunakan API.
+8. Menerapkan teknik konstruksi perangkat lunak.
+9. Menerapkan clean code dan design pattern.
+10. Menambahkan unit testing, performance testing, dan secure coding practice.
 
 ---
 
 # 👥 Pembagian Tugas
-
-Pembagian tugas mengikuti progress kelompok yang sudah dibuat.
 
 | Nama       | Bagian yang Dikerjakan                                        |
 | ---------- | ------------------------------------------------------------- |
@@ -64,9 +66,7 @@ Pembagian tugas mengikuti progress kelompok yang sudah dibuat.
 
 ---
 
-# 🧩 Teknik Konstruksi yang Digunakan
-
-Teknik konstruksi yang dipilih oleh masing-masing anggota adalah sebagai berikut:
+# 🧩 Teknik Konstruksi Berdasarkan Anggota
 
 | Nama       | Teknik Konstruksi                                   |
 | ---------- | --------------------------------------------------- |
@@ -75,7 +75,7 @@ Teknik konstruksi yang dipilih oleh masing-masing anggota adalah sebagai berikut
 | **Ghina**  | Generic dan Library                                 |
 | **Shofi**  | Generic dan Runtime Configuration                   |
 
-Selain pembagian tersebut, project ini juga menggunakan **Automata** pada alur status pesanan dan pembayaran.
+Selain pembagian tersebut, project ini juga menerapkan **Automata** pada alur status pesanan dan pembayaran.
 
 ---
 
@@ -85,26 +85,31 @@ Selain pembagian tersebut, project ini juga menggunakan **Automata** pada alur s
 
 | Teknologi        | Fungsi                                 |
 | ---------------- | -------------------------------------- |
-| React.js         | Membuat tampilan aplikasi              |
+| React.js         | Membuat antarmuka aplikasi             |
+| Vite             | Build tool frontend                    |
 | React Router DOM | Navigasi antar halaman                 |
 | Framer Motion    | Animasi tampilan                       |
 | Lucide React     | Icon modern                            |
 | React Icons      | Icon tambahan                          |
 | CSS              | Styling halaman                        |
 | LocalStorage     | Menyimpan data user dan cart sementara |
+| Vitest           | Unit testing frontend                  |
 
 ## Backend
 
-| Teknologi      | Fungsi                             |
-| -------------- | ---------------------------------- |
-| Node.js        | Runtime backend                    |
-| Express.js     | Membuat API server                 |
-| MySQL          | Database                           |
-| mysql2/promise | Koneksi database                   |
-| bcryptjs       | Hash password dan OTP              |
-| nodemailer     | Mengirim email OTP                 |
-| dotenv         | Membaca konfigurasi `.env`         |
-| cors           | Menghubungkan frontend dan backend |
+| Teknologi          | Fungsi                             |
+| ------------------ | ---------------------------------- |
+| Node.js            | Runtime backend                    |
+| Express.js         | Membuat API server                 |
+| MySQL              | Database                           |
+| mysql2/promise     | Koneksi database                   |
+| bcryptjs           | Hash password dan OTP              |
+| nodemailer         | Mengirim email OTP                 |
+| dotenv             | Membaca konfigurasi `.env`         |
+| cors               | Mengatur akses frontend ke backend |
+| helmet             | Menambahkan security headers       |
+| express-rate-limit | Membatasi request berlebih         |
+| Jest               | Unit testing backend               |
 
 ---
 
@@ -117,13 +122,30 @@ Tubes_KPL_Aduh/
 │   ├── api/
 │   │   └── authApi.js
 │   │
+│   ├── tests/
+│   │   ├── unit/
+│   │   │   ├── authUtils.test.js
+│   │   │   └── orderUtils.test.js
+│   │   │
+│   │   └── performance/
+│   │       └── api.perf.js
+│   │
+│   ├── utils/
+│   │   ├── authUtils.js
+│   │   └── orderUtils.js
+│   │
 │   ├── db.js
 │   ├── mailer.js
+│   ├── server.js
+│   ├── jest.config.js
 │   ├── package.json
-│   ├── package-lock.json
-│   └── server.js
+│   └── package-lock.json
 │
 ├── frontend/
+│   ├── tests/
+│   │   └── performance/
+│   │       └── frontend.perf.cjs
+│   │
 │   ├── src/
 │   │   ├── api/
 │   │   │   └── authApi.js
@@ -135,9 +157,6 @@ Tubes_KPL_Aduh/
 │   │   ├── context/
 │   │   │   └── CartContext.jsx
 │   │   │
-│   │   ├── data/
-│   │   │   └── vendorData.js
-│   │   │
 │   │   ├── features/
 │   │   │   ├── cart/
 │   │   │   ├── checkout/
@@ -145,7 +164,6 @@ Tubes_KPL_Aduh/
 │   │   │
 │   │   ├── pages/
 │   │   │   ├── Home.jsx
-│   │   │   ├── Beranda.jsx
 │   │   │   ├── VendorList.jsx
 │   │   │   ├── VendorDetailPage.jsx
 │   │   │   ├── CartPage.jsx
@@ -159,16 +177,20 @@ Tubes_KPL_Aduh/
 │   │   │   ├── ForgotPassword.jsx
 │   │   │   └── Verify.jsx
 │   │   │
-│   │   ├── styles/
-│   │   │   ├── PaymentQris.css
-│   │   │   ├── PaymentSuccess.css
-│   │   │   ├── Verify.css
-│   │   │   ├── ForgotPassword.css
-│   │   │   └── login.css
+│   │   ├── utils/
+│   │   │   ├── formatters.js
+│   │   │   ├── cartUtils.js
+│   │   │   ├── checkoutUtils.js
+│   │   │   └── __tests__/
+│   │   │       ├── formatters.test.js
+│   │   │       ├── cartUtils.test.js
+│   │   │       └── checkoutUtils.test.js
 │   │   │
+│   │   ├── styles/
 │   │   ├── App.jsx
 │   │   └── main.jsx
 │   │
+│   ├── vitest.config.js
 │   ├── package.json
 │   └── package-lock.json
 │
@@ -182,57 +204,20 @@ Tubes_KPL_Aduh/
 
 ## 1. Register
 
-Pengguna dapat membuat akun baru dengan memasukkan nama, email, password, nomor HP, dan alamat.
+Pengguna dapat membuat akun baru dengan nama, email, password, nomor HP, dan alamat.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/Register.jsx
 backend/server.js
 ```
 
-**Kode backend:**
-
-```js
-app.post("/api/register", async (req, res) => {
-  const { nama, email, password, no_hp, alamat } = req.body;
-
-  if (!nama || !email || !password) {
-    return res.status(400).json({
-      success: false,
-      message: "Nama, email, dan password wajib diisi.",
-    });
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  const [result] = await pool.query(
-    `INSERT INTO users (nama, email, password, no_hp, alamat)
-     VALUES (?, ?, ?, ?, ?)`,
-    [nama, email, hashedPassword, no_hp || null, alamat || null]
-  );
-
-  return res.status(201).json({
-    success: true,
-    message: "Registrasi berhasil. Silakan login.",
-    data: {
-      id_user: result.insertId,
-      nama,
-      email,
-      no_hp,
-      alamat,
-    },
-  });
-});
-```
-
----
-
 ## 2. Login
 
 Pengguna dapat login menggunakan email dan password. Setelah login berhasil, data user disimpan ke `localStorage`.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/login.jsx
@@ -240,7 +225,7 @@ frontend/src/api/authApi.js
 backend/server.js
 ```
 
-**Kode penyimpanan user:**
+Contoh kode:
 
 ```js
 const result = await loginUser(email, password);
@@ -250,13 +235,11 @@ localStorage.setItem("foodora_user", JSON.stringify(result.data));
 navigate("/beranda");
 ```
 
----
-
 ## 3. Forgot Password dan OTP
 
-Pengguna dapat meminta kode OTP untuk melakukan reset password. OTP dikirim menggunakan email, dan untuk kebutuhan demo OTP juga ditampilkan di terminal backend.
+Pengguna dapat meminta kode OTP untuk reset password. OTP dikirim melalui email dan juga dapat ditampilkan di terminal backend untuk kebutuhan demo.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/ForgotPassword.jsx
@@ -265,7 +248,7 @@ backend/server.js
 backend/mailer.js
 ```
 
-**Kode generate OTP:**
+Contoh kode generate OTP:
 
 ```js
 function generateOtp() {
@@ -273,26 +256,11 @@ function generateOtp() {
 }
 ```
 
-**Kode simpan OTP ke database:**
-
-```js
-await pool.query(
-  `
-  INSERT INTO password_reset_otps
-  (id_user, channel, target, otp_hash, expires_at)
-  VALUES (?, ?, ?, ?, DATE_ADD(NOW(), INTERVAL 10 MINUTE))
-  `,
-  [user.id_user, channel, target, otpHash]
-);
-```
-
----
-
 ## 4. List Vendor
 
-Pengguna dapat melihat daftar vendor katering yang tersedia.
+Pengguna dapat melihat daftar vendor katering.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/VendorList.jsx
@@ -300,7 +268,7 @@ frontend/src/components/VendorCard.jsx
 backend/server.js
 ```
 
-**Kode endpoint vendor:**
+Contoh endpoint:
 
 ```js
 app.get("/api/vendors", async (req, res) => {
@@ -315,13 +283,11 @@ app.get("/api/vendors", async (req, res) => {
 });
 ```
 
----
-
 ## 5. Detail Vendor dan Menu
 
-Pengguna dapat melihat detail vendor dan menu yang tersedia.
+Pengguna dapat melihat detail vendor dan menu dari vendor tertentu.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/VendorDetailPage.jsx
@@ -329,31 +295,11 @@ frontend/src/features/vendor-detail/components/MenuCard.jsx
 backend/server.js
 ```
 
-**Kode endpoint menu vendor:**
-
-```js
-app.get("/api/vendors/:id_vendor/menu", async (req, res) => {
-  const { id_vendor } = req.params;
-
-  const [menus] = await pool.query(
-    "SELECT * FROM menu WHERE id_vendor = ? ORDER BY id_menu DESC",
-    [id_vendor]
-  );
-
-  return res.json({
-    success: true,
-    data: menus,
-  });
-});
-```
-
----
-
 ## 6. Keranjang
 
-Pengguna dapat menambahkan menu ke keranjang, mengubah jumlah item, menghapus item, dan melihat total harga.
+Pengguna dapat menambahkan menu ke keranjang, mengubah jumlah item, dan menghapus item.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/context/CartContext.jsx
@@ -361,74 +307,18 @@ frontend/src/pages/CartPage.jsx
 frontend/src/features/cart/components/CartItem.jsx
 ```
 
-**Kode normalisasi cart item:**
-
-```js
-function normalizeCartItem(item) {
-  const idMenu = Number(item.id_menu || item.id);
-  const qty = Number(item.qty || item.jumlah || 1);
-  const price = Number(item.price || item.harga || 0);
-
-  if (!idMenu || Number.isNaN(idMenu)) {
-    return null;
-  }
-
-  return {
-    id: idMenu,
-    id_menu: idMenu,
-    name: item.name || item.nama_menu || "Menu Foodora",
-    nama_menu: item.nama_menu || item.name || "Menu Foodora",
-    price,
-    harga: price,
-    qty: qty > 0 ? qty : 1,
-    jumlah: qty > 0 ? qty : 1,
-    image: item.image || item.img || "",
-  };
-}
-```
-
----
-
 ## 7. Checkout dan Booking Tanggal
 
-Pada halaman checkout, pengguna dapat memilih tanggal booking. Tanggal yang sudah pernah dibooking akan terkunci dan tidak bisa dipilih kembali.
+Pengguna dapat melakukan checkout dan memilih tanggal booking. Tanggal yang sudah dibooking tidak dapat dipilih kembali.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/CheckoutPage.jsx
-frontend/src/features/checkout/styles/checkout.css
 backend/server.js
 ```
 
-**Endpoint tanggal booking:**
-
-```js
-app.get("/api/pesanan/booked-dates", async (req, res) => {
-  try {
-    const [rows] = await pool.query(
-      `
-      SELECT DATE_FORMAT(tanggal, '%Y-%m-%d') AS tanggal
-      FROM pesanan
-      WHERE status NOT IN ('Dibatalkan', 'Batal')
-      `
-    );
-
-    res.json({
-      success: true,
-      data: rows.map((row) => row.tanggal),
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Gagal mengambil tanggal booking.",
-      error: error.message,
-    });
-  }
-});
-```
-
-**Validasi tanggal booking:**
+Contoh validasi tanggal booking:
 
 ```js
 if (!selectedDate) {
@@ -442,88 +332,33 @@ if (bookedDates.includes(selectedDate)) {
 }
 ```
 
-**Payload checkout:**
-
-```js
-const payload = {
-  id_user: user.id_user,
-  metode_pembayaran: paymentMethod,
-  tanggal_booking: selectedDate,
-  items: cartItems.map((item) => ({
-    id_menu: item.id_menu || item.id,
-    jumlah: item.qty || item.jumlah || 1,
-  })),
-};
-```
-
----
-
 ## 8. Payment QRIS
 
 Setelah checkout berhasil, pengguna diarahkan ke halaman pembayaran QRIS.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/PaymentQris.jsx
 frontend/src/styles/PaymentQris.css
 ```
 
-**Kode konfirmasi pembayaran:**
-
-```js
-async function handlePayment() {
-  try {
-    await konfirmasiPembayaran(orderId);
-
-    clearCart();
-
-    navigate("/payment-success", {
-      state: {
-        orderId,
-        total,
-        paymentMethod,
-        selectedDate,
-      },
-    });
-  } catch (error) {
-    alert(error.message || "Gagal mengkonfirmasi pembayaran");
-    console.error(error);
-  }
-}
-```
-
----
-
 ## 9. Payment Success
 
-Setelah pembayaran berhasil dikonfirmasi, pengguna diarahkan ke halaman sukses pembayaran.
+Setelah pembayaran dikonfirmasi, pengguna diarahkan ke halaman sukses pembayaran.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/PaymentSuccess.jsx
 frontend/src/styles/PaymentSuccess.css
 ```
 
-**Kode mengambil data pembayaran:**
-
-```js
-const location = useLocation();
-
-const orderId = location.state?.orderId;
-const total = location.state?.total;
-const paymentMethod = location.state?.paymentMethod;
-const selectedDate = location.state?.selectedDate;
-```
-
----
-
 ## 10. Histori Pesanan
 
 Pengguna dapat melihat histori pesanan berdasarkan akun yang sedang login.
 
-**File terkait:**
+File terkait:
 
 ```txt
 frontend/src/pages/History.jsx
@@ -531,63 +366,27 @@ frontend/src/pages/HistoriPesanan.jsx
 backend/server.js
 ```
 
-**Endpoint histori pesanan:**
-
-```js
-app.get("/api/users/:id_user/pesanan", async (req, res) => {
-  const { id_user } = req.params;
-
-  const [pesananRows] = await pool.query(
-    `SELECT 
-      pesanan.id_pesanan,
-      pesanan.id_user,
-      pesanan.tanggal,
-      pesanan.total_harga,
-      pesanan.status,
-      pembayaran.metode AS metode_pembayaran,
-      pembayaran.status AS status_pembayaran,
-      pembayaran.tanggal_bayar
-     FROM pesanan
-     LEFT JOIN pembayaran ON pembayaran.id_pesanan = pesanan.id_pesanan
-     WHERE pesanan.id_user = ?
-     ORDER BY pesanan.id_pesanan DESC`,
-    [id_user]
-  );
-
-  return res.json({
-    success: true,
-    data: pesananRows,
-  });
-});
-```
-
 ---
 
-# 🧠 Penerapan Teknik Konstruksi
-
----
+# 🧠 Teknik Konstruksi Perangkat Lunak
 
 ## 1. Automata
 
-### Pengertian
-
-Automata adalah teknik yang menggambarkan sistem dalam bentuk state atau kondisi. Sistem akan berpindah dari satu state ke state lain berdasarkan input atau aksi tertentu.
-
-### Penerapan pada Project
-
 Automata diterapkan pada alur status pesanan dan pembayaran.
+
+Alur state:
 
 ```txt
 Menunggu Pembayaran -> Diproses -> Dikirim / Selesai
 ```
 
-Saat pesanan dibuat, status awal adalah:
+Pada saat pesanan dibuat, status pesanan adalah:
 
 ```txt
 Menunggu Pembayaran
 ```
 
-Setelah pengguna menekan tombol **Saya Sudah Bayar**, status pembayaran berubah menjadi:
+Setelah user melakukan konfirmasi pembayaran, status pembayaran menjadi:
 
 ```txt
 Lunas
@@ -599,7 +398,7 @@ dan status pesanan berubah menjadi:
 Diproses
 ```
 
-### Letak Kode
+Letak kode:
 
 ```txt
 backend/server.js
@@ -607,82 +406,40 @@ frontend/src/pages/PaymentQris.jsx
 frontend/src/pages/PaymentSuccess.jsx
 ```
 
-### Kode Automata Status
+Contoh kode:
 
 ```js
-app.put("/api/pesanan/:id_pesanan/bayar", async (req, res) => {
-  const connection = await pool.getConnection();
+await connection.query(
+  `
+  UPDATE pembayaran
+  SET status = 'Lunas',
+      tanggal_bayar = NOW()
+  WHERE id_pesanan = ?
+  `,
+  [id_pesanan]
+);
 
-  try {
-    const { id_pesanan } = req.params;
-
-    await connection.beginTransaction();
-
-    await connection.query(
-      `
-      UPDATE pembayaran
-      SET status = 'Lunas',
-          tanggal_bayar = NOW()
-      WHERE id_pesanan = ?
-      `,
-      [id_pesanan]
-    );
-
-    await connection.query(
-      `
-      UPDATE pesanan
-      SET status = 'Diproses'
-      WHERE id_pesanan = ?
-      `,
-      [id_pesanan]
-    );
-
-    await connection.commit();
-
-    res.json({
-      success: true,
-      message: "Pembayaran berhasil",
-    });
-  } catch (error) {
-    await connection.rollback();
-
-    res.status(500).json({
-      success: false,
-      message: error.message,
-    });
-  } finally {
-    connection.release();
-  }
-});
+await connection.query(
+  `
+  UPDATE pesanan
+  SET status = 'Diproses'
+  WHERE id_pesanan = ?
+  `,
+  [id_pesanan]
+);
 ```
-
-### Tabel Automata
-
-| Aksi                       | State Awal          | State Akhir         |
-| -------------------------- | ------------------- | ------------------- |
-| User membuat pesanan       | Belum ada pesanan   | Menunggu Pembayaran |
-| User klik Saya Sudah Bayar | Menunggu Pembayaran | Diproses            |
-| Sistem update pembayaran   | Belum Dibayar       | Lunas               |
-
----
 
 ## 2. Table Driven Construction
 
-### Pengertian
+Table Driven Construction digunakan pada checkout untuk menampilkan metode pembayaran berdasarkan data array.
 
-Table Driven Construction adalah teknik membuat program berdasarkan data tabel, array, atau object sehingga kode tidak terlalu banyak menggunakan percabangan.
-
-### Penerapan pada Project
-
-Teknik ini diterapkan pada checkout, terutama pada bagian metode pembayaran dan jadwal pengiriman.
-
-### Letak Kode
+Letak kode:
 
 ```txt
 frontend/src/pages/CheckoutPage.jsx
 ```
 
-### Kode Metode Pembayaran
+Contoh kode:
 
 ```js
 const paymentMethods = [
@@ -713,68 +470,51 @@ const paymentMethods = [
 ];
 ```
 
-### Kode Render Menggunakan Map
+Data tersebut dirender menggunakan `map()`:
 
 ```jsx
-<div className="cox-payment-grid">
-  {paymentMethods.map((method) => {
-    const Icon = method.icon;
-    const active = paymentMethod === method.id;
+{paymentMethods.map((method) => {
+  const Icon = method.icon;
 
-    return (
-      <motion.button
-        key={method.id}
-        type="button"
-        className={active ? "active" : ""}
-        onClick={() => setPaymentMethod(method.id)}
-      >
-        <Icon size={21} />
-        <strong>{method.name}</strong>
-        <span>{method.desc}</span>
-      </motion.button>
-    );
-  })}
-</div>
+  return (
+    <button
+      key={method.id}
+      type="button"
+      onClick={() => setPaymentMethod(method.id)}
+    >
+      <Icon size={21} />
+      <strong>{method.name}</strong>
+      <span>{method.desc}</span>
+    </button>
+  );
+})}
 ```
-
-### Kesimpulan
-
-Dengan Table Driven Construction, jika ingin menambah metode pembayaran baru, cukup menambahkan data baru ke array `paymentMethods`.
-
----
 
 ## 3. Parameterization / Generic
 
-### Pengertian
+Generic digunakan pada function yang menerima parameter sehingga dapat dipakai berulang kali.
 
-Parameterization atau Generic adalah teknik membuat function atau komponen yang dapat digunakan untuk banyak jenis data melalui parameter.
-
-### Penerapan pada Project
-
-Teknik ini digunakan untuk format harga, format tanggal, pengambilan data item, dan request API.
-
-### Letak Kode
+Letak kode:
 
 ```txt
-frontend/src/pages/CheckoutPage.jsx
-frontend/src/pages/PaymentQris.jsx
-frontend/src/pages/PaymentSuccess.jsx
-frontend/src/context/CartContext.jsx
+frontend/src/utils/formatters.js
+frontend/src/utils/cartUtils.js
+frontend/src/utils/checkoutUtils.js
 frontend/src/api/authApi.js
 ```
 
-### Kode Generic Format Rupiah
+Contoh kode format Rupiah:
 
 ```js
-function formatRp(value) {
+export function formatRp(value) {
   return "Rp " + Number(value || 0).toLocaleString("id-ID");
 }
 ```
 
-### Kode Generic Format Tanggal
+Contoh kode format tanggal:
 
 ```js
-function formatTanggal(value) {
+export function formatTanggal(value) {
   if (!value) return "-";
 
   return new Date(value).toLocaleDateString("id-ID", {
@@ -786,54 +526,20 @@ function formatTanggal(value) {
 }
 ```
 
-### Kode Generic API Request
-
-```js
-async function request(path, options = {}) {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
-    ...options,
-  });
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(data.message || "Terjadi kesalahan.");
-  }
-
-  return data;
-}
-```
-
-### Kesimpulan
-
-Generic membuat kode lebih fleksibel karena satu function dapat digunakan di berbagai halaman dan berbagai data.
-
----
-
 ## 4. Runtime Configuration
 
-### Pengertian
+Runtime Configuration digunakan untuk mengatur database, port server, email OTP, dan allowed origin melalui `.env`.
 
-Runtime Configuration adalah teknik pengaturan konfigurasi aplikasi melalui file `.env` atau environment variable yang dibaca saat aplikasi berjalan.
-
-### Penerapan pada Project
-
-Runtime Configuration digunakan pada konfigurasi database, port backend, email pengirim OTP, dan Google Client ID.
-
-### Letak Kode
+Letak kode:
 
 ```txt
 backend/.env
 backend/db.js
-backend/mailer.js
 backend/server.js
+backend/mailer.js
 ```
 
-### Contoh `.env`
+Contoh `.env`:
 
 ```env
 DB_HOST=localhost
@@ -843,107 +549,70 @@ DB_NAME=db_pemesanan_katering
 DB_PORT=3306
 
 PORT=3001
+CLIENT_ORIGIN=http://localhost:5173
 
 MAIL_USER=emailpengirim@gmail.com
 MAIL_PASS=app_password_gmail
 MAIL_FROM=Foodora <emailpengirim@gmail.com>
-
-GOOGLE_CLIENT_ID=google_client_id
 ```
 
-### Kode Database Runtime Configuration
+Contoh kode:
 
 ```js
-const mysql = require("mysql2/promise");
-require("dotenv").config();
-
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   port: process.env.DB_PORT || 3306,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0,
 });
-
-module.exports = pool;
 ```
-
-### Kesimpulan
-
-Runtime Configuration membuat aplikasi lebih aman dan mudah dipindahkan ke perangkat lain tanpa mengubah kode utama.
-
----
 
 ## 5. Code Reuse Library
 
-### Pengertian
+Project ini menggunakan library eksternal dan internal agar kode tidak dibuat dari awal.
 
-Code Reuse Library adalah teknik menggunakan library atau modul yang sudah tersedia agar developer tidak membuat semua fitur dari awal.
+Library eksternal:
 
-### Penerapan pada Project
+| Library            | Fungsi                |
+| ------------------ | --------------------- |
+| react-router-dom   | Navigasi halaman      |
+| framer-motion      | Animasi UI            |
+| lucide-react       | Icon UI               |
+| mysql2             | Koneksi database      |
+| bcryptjs           | Hash password dan OTP |
+| nodemailer         | Kirim email OTP       |
+| dotenv             | Membaca `.env`        |
+| helmet             | Security headers      |
+| express-rate-limit | Rate limiter          |
+| jest               | Unit test backend     |
+| vitest             | Unit test frontend    |
 
-Project ini menggunakan library eksternal dan internal.
+Library internal:
 
-### Library Eksternal
-
-| Library          | Fungsi                                  |
-| ---------------- | --------------------------------------- |
-| react-router-dom | Navigasi antar halaman                  |
-| framer-motion    | Animasi UI                              |
-| lucide-react     | Icon modern                             |
-| react-icons      | Icon tambahan                           |
-| mysql2           | Koneksi MySQL                           |
-| bcryptjs         | Hash password dan OTP                   |
-| nodemailer       | Kirim email OTP                         |
-| dotenv           | Membaca `.env`                          |
-| cors             | Mengizinkan request frontend ke backend |
-
-### Contoh Framer Motion
-
-```jsx
-<motion.section
-  className="ps-card"
-  initial={{ opacity: 0, y: 38, scale: 0.92 }}
-  animate={{ opacity: 1, y: 0, scale: 1 }}
-  transition={{
-    duration: 0.65,
-    ease: "easeOut",
-  }}
->
-  ...
-</motion.section>
+```txt
+frontend/src/api/authApi.js
+frontend/src/utils/formatters.js
+frontend/src/utils/cartUtils.js
+frontend/src/utils/checkoutUtils.js
+backend/db.js
+backend/mailer.js
+backend/utils/authUtils.js
+backend/utils/orderUtils.js
 ```
-
-### Contoh bcrypt
-
-```js
-const hashedPassword = await bcrypt.hash(password, 10);
-const isPasswordValid = await bcrypt.compare(password, user.password);
-```
-
-### Kesimpulan
-
-Dengan library, project menjadi lebih cepat dibuat, lebih rapi, dan lebih mudah dikembangkan.
-
----
 
 ## 6. API
 
-### Pengertian
+API digunakan sebagai penghubung frontend dan backend.
 
-API adalah penghubung antara frontend dan backend. Frontend mengirim request ke backend, lalu backend mengolah data dan mengirim response.
-
-### Letak Kode
+Letak kode:
 
 ```txt
 frontend/src/api/authApi.js
 backend/server.js
 ```
 
-### API Client Frontend
+Contoh API client frontend:
 
 ```js
 const API_BASE_URL = "http://localhost:3001/api";
@@ -967,7 +636,7 @@ async function request(path, options = {}) {
 }
 ```
 
-### Daftar API
+Daftar API:
 
 | Method | Endpoint                         | Fungsi                |
 | ------ | -------------------------------- | --------------------- |
@@ -986,246 +655,21 @@ async function request(path, options = {}) {
 
 ---
 
-# 👨‍💻 Pembagian Teknik Berdasarkan Anggota
-
-## Aditio
-
-### Runtime Configuration dan Table Driven Construction
-
-**Bagian:**
-
-```txt
-Keranjang, checkout, detail vendor
-```
-
-**Letak kode:**
-
-```txt
-frontend/src/pages/CheckoutPage.jsx
-frontend/src/context/CartContext.jsx
-backend/db.js
-backend/server.js
-```
-
-**Contoh Table Driven Construction:**
-
-```js
-const deliverySlots = [
-  "Sekarang",
-  "11:00 - 12:00",
-  "12:00 - 13:00",
-  "18:00 - 19:00",
-];
-```
-
----
-
-## Chiara
-
-### Library dan API
-
-**Bagian:**
-
-```txt
-Login, lupa password, buat password baru
-```
-
-**Letak kode:**
-
-```txt
-frontend/src/pages/login.jsx
-frontend/src/pages/ForgotPassword.jsx
-frontend/src/pages/Verify.jsx
-frontend/src/api/authApi.js
-backend/server.js
-backend/mailer.js
-```
-
-**Contoh API:**
-
-```js
-export function forgotPassword(payload) {
-  return request("/forgot-password", {
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
-}
-```
-
----
-
-## Ghina
-
-### Generic dan Library
-
-**Bagian:**
-
-```txt
-Register, verifikasi kode, password berhasil, riwayat pesanan
-```
-
-**Letak kode:**
-
-```txt
-frontend/src/pages/Register.jsx
-frontend/src/pages/Verify.jsx
-frontend/src/pages/HistoriPesanan.jsx
-frontend/src/api/authApi.js
-```
-
-**Contoh Generic:**
-
-```js
-async function request(path, options = {}) {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
-    ...options,
-  });
-
-  return response.json();
-}
-```
-
----
-
-## Shofi
-
-### Generic dan Runtime Configuration
-
-**Bagian:**
-
-```txt
-Home page, beranda, list vendor, histori
-```
-
-**Letak kode:**
-
-```txt
-frontend/src/pages/Home.jsx
-frontend/src/pages/Beranda.jsx
-frontend/src/pages/VendorList.jsx
-frontend/src/pages/History.jsx
-frontend/src/pages/HistoriPesanan.jsx
-frontend/src/components/VendorCard.jsx
-```
-
-**Contoh Generic Component:**
-
-```jsx
-function VendorCard({ vendor }) {
-  return (
-    <div className="vendor-card">
-      <h3>{vendor.nama_vendor}</h3>
-      <p>{vendor.deskripsi}</p>
-    </div>
-  );
-}
-```
-
----
-
-# 🧼 Clean Code
-
-Clean Code diterapkan agar kode mudah dibaca, diperbaiki, dan dikembangkan.
-
-## 1. Penamaan Function Jelas
-
-```js
-function formatRp(value) {
-  return "Rp " + Number(value || 0).toLocaleString("id-ID");
-}
-```
-
-Function tersebut jelas digunakan untuk mengubah angka menjadi format Rupiah.
-
----
-
-## 2. Pemisahan Tanggung Jawab File
-
-| File                                   | Tanggung Jawab            |
-| -------------------------------------- | ------------------------- |
-| `backend/db.js`                        | Koneksi database          |
-| `backend/mailer.js`                    | Pengiriman email OTP      |
-| `backend/server.js`                    | Endpoint backend          |
-| `frontend/src/api/authApi.js`          | API client frontend       |
-| `frontend/src/context/CartContext.jsx` | State keranjang           |
-| `CheckoutPage.jsx`                     | Checkout dan booking      |
-| `PaymentQris.jsx`                      | Pembayaran QRIS           |
-| `PaymentSuccess.jsx`                   | Halaman sukses pembayaran |
-
----
-
-## 3. Reusable Function
-
-```js
-function getItemPrice(item) {
-  return Number(item.price || item.harga || 0);
-}
-
-function getItemQty(item) {
-  return Number(item.qty || item.jumlah || 1);
-}
-
-function getItemName(item) {
-  return item.name || item.nama_menu || "Menu Foodora";
-}
-```
-
----
-
-## 4. Error Handling
-
-```js
-try {
-  const result = await createPesanan(payload);
-} catch (error) {
-  console.error("Checkout error:", error);
-  setMessage(error.message || "Gagal membuat pesanan.");
-}
-```
-
----
-
-## 5. Validasi Input
-
-```js
-if (cartItems.length === 0) {
-  setMessage("Keranjang masih kosong.");
-  return;
-}
-
-if (!selectedDate) {
-  setMessage("Pilih tanggal booking terlebih dahulu.");
-  return;
-}
-```
-
----
-
 # 🧱 Design Pattern
 
----
+## Singleton Pattern
 
-## 1. Singleton Pattern
+Design pattern yang digunakan pada project ini adalah **Singleton Pattern**.
 
-### Pengertian
+Singleton Pattern adalah design pattern yang memastikan sebuah object hanya dibuat satu kali dan digunakan bersama oleh bagian lain dalam aplikasi.
 
-Singleton Pattern adalah design pattern yang memastikan suatu object hanya dibuat satu kali dan digunakan bersama oleh seluruh aplikasi.
-
-### Penerapan
-
-Singleton Pattern diterapkan pada koneksi database di file `backend/db.js`.
-
-**Letak kode:**
+Pada project ini, Singleton Pattern diterapkan pada koneksi database MySQL di file:
 
 ```txt
 backend/db.js
 ```
 
-**Kode:**
+Kode:
 
 ```js
 const mysql = require("mysql2/promise");
@@ -1245,102 +689,553 @@ const pool = mysql.createPool({
 module.exports = pool;
 ```
 
-**Digunakan di file lain:**
+Digunakan pada file lain:
 
 ```js
 const pool = require("./db");
 ```
 
-### Alasan Menggunakan Singleton
+Alasan menggunakan Singleton Pattern:
 
-Database pool sebaiknya hanya dibuat satu kali agar koneksi tidak dibuat berulang-ulang di setiap request. Dengan Singleton Pattern, koneksi database menjadi lebih efisien dan stabil.
+1. Koneksi database cukup dibuat satu kali.
+2. Menghindari pembuatan koneksi berulang pada setiap request.
+3. Menghemat resource server.
+4. Membuat kode backend lebih rapi.
+5. Memudahkan maintenance konfigurasi database.
 
 ---
 
-## 2. Module Pattern
+# 🧼 Clean Code
 
-### Pengertian
+Clean code diterapkan agar kode mudah dibaca, diperbaiki, dan dikembangkan.
 
-Module Pattern digunakan untuk memisahkan kode berdasarkan fungsi tertentu ke dalam file khusus.
+## 1. Penamaan Function Jelas
 
-### Penerapan
-
-Module Pattern digunakan pada API frontend dan mailer backend.
-
-**Letak kode:**
-
-```txt
-frontend/src/api/authApi.js
-backend/mailer.js
-```
-
-**Contoh API Module:**
+Contoh:
 
 ```js
-export function loginUser(email, password) {
-  return request("/login", {
-    method: "POST",
-    body: JSON.stringify({ email, password }),
-  });
-}
-
-export function createPesanan(payload) {
-  return request("/pesanan", {
-    method: "POST",
-    body: JSON.stringify(payload),
-  });
+function generateOtp() {
+  return String(crypto.randomInt(100000, 999999));
 }
 ```
-
----
-
-## 3. Context / Provider Pattern
-
-### Pengertian
-
-Context Pattern digunakan untuk menyediakan data global agar bisa digunakan oleh banyak komponen tanpa props drilling.
-
-### Penerapan
-
-Context Pattern digunakan pada fitur keranjang.
-
-**Letak kode:**
-
-```txt
-frontend/src/context/CartContext.jsx
-frontend/src/App.jsx
-```
-
-**Kode:**
-
-```jsx
-const CartContext = createContext(null);
-
-export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState(getInitialCart);
-
-  const value = {
-    cartItems,
-    totalItems,
-    addToCart,
-    updateQty,
-    removeFromCart,
-    clearCart,
-  };
-
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
-}
-```
-
-**Penggunaan:**
 
 ```js
-const { cartItems, updateQty } = useCart();
+function normalizeOrderItems(items) {
+  // logic normalisasi item pesanan
+}
+```
+
+Nama function menjelaskan fungsi dari kode tersebut.
+
+## 2. Pemisahan Tanggung Jawab File
+
+| File                                   | Tanggung Jawab            |
+| -------------------------------------- | ------------------------- |
+| `backend/db.js`                        | Koneksi database          |
+| `backend/mailer.js`                    | Kirim email OTP           |
+| `backend/server.js`                    | Endpoint API              |
+| `backend/utils/authUtils.js`           | Helper autentikasi        |
+| `backend/utils/orderUtils.js`          | Helper pesanan            |
+| `frontend/src/api/authApi.js`          | API client frontend       |
+| `frontend/src/context/CartContext.jsx` | State keranjang           |
+| `frontend/src/utils/formatters.js`     | Format Rupiah dan tanggal |
+| `frontend/src/utils/cartUtils.js`      | Helper cart               |
+| `frontend/src/utils/checkoutUtils.js`  | Helper checkout           |
+
+## 3. Error Handling
+
+Contoh:
+
+```js
+try {
+  const [vendors] = await pool.query(
+    "SELECT * FROM vendors ORDER BY id_vendor DESC"
+  );
+
+  return res.json({
+    success: true,
+    data: vendors,
+  });
+} catch (error) {
+  return res.status(500).json({
+    success: false,
+    message: "Gagal mengambil data vendor.",
+    error: error.message,
+  });
+}
+```
+
+## 4. Validasi Input
+
+Contoh:
+
+```js
+if (!email || !password) {
+  return res.status(400).json({
+    success: false,
+    message: "Email dan password wajib diisi.",
+  });
+}
+```
+
+## 5. Parameterized Query
+
+Contoh:
+
+```js
+const [users] = await pool.query(
+  "SELECT * FROM users WHERE email = ? LIMIT 1",
+  [email]
+);
+```
+
+Dengan parameterized query, risiko SQL Injection dapat dikurangi.
+
+---
+
+# 🧪 Unit Testing
+
+Unit Testing digunakan untuk menguji bagian kecil dari program, seperti function helper dan logic tertentu.
+
+## 1. Unit Testing Backend
+
+Backend menggunakan **Jest**.
+
+Letak file test:
+
+```txt
+backend/tests/unit/authUtils.test.js
+backend/tests/unit/orderUtils.test.js
+```
+
+File utility yang diuji:
+
+```txt
+backend/utils/authUtils.js
+backend/utils/orderUtils.js
+```
+
+Contoh kode yang diuji:
+
+```js
+function normalizeOrderItems(items) {
+  if (!Array.isArray(items)) {
+    return [];
+  }
+
+  return items
+    .map((item) => {
+      const idMenu = Number(item.id_menu || item.id);
+      const jumlah = Number(item.jumlah || item.qty || 1);
+
+      if (!idMenu || Number.isNaN(idMenu) || jumlah <= 0) {
+        return null;
+      }
+
+      return {
+        id_menu: idMenu,
+        jumlah,
+      };
+    })
+    .filter(Boolean);
+}
+```
+
+Contoh unit test:
+
+```js
+test("normalizeOrderItems mengubah item cart menjadi format pesanan", () => {
+  const items = [
+    {
+      id_menu: "101",
+      qty: "2",
+    },
+    {
+      id: 102,
+      jumlah: 3,
+    },
+  ];
+
+  expect(normalizeOrderItems(items)).toEqual([
+    {
+      id_menu: 101,
+      jumlah: 2,
+    },
+    {
+      id_menu: 102,
+      jumlah: 3,
+    },
+  ]);
+});
+```
+
+Script:
+
+```json
+"test": "jest",
+"test:unit": "jest tests/unit"
+```
+
+Cara menjalankan:
+
+```bash
+cd backend
+npm run test:unit
+```
+
+## 2. Unit Testing Frontend
+
+Frontend menggunakan **Vitest**.
+
+Letak file test:
+
+```txt
+frontend/src/utils/__tests__/formatters.test.js
+frontend/src/utils/__tests__/cartUtils.test.js
+frontend/src/utils/__tests__/checkoutUtils.test.js
+```
+
+File utility yang diuji:
+
+```txt
+frontend/src/utils/formatters.js
+frontend/src/utils/cartUtils.js
+frontend/src/utils/checkoutUtils.js
+```
+
+Contoh kode yang diuji:
+
+```js
+export function formatRp(value) {
+  return "Rp " + Number(value || 0).toLocaleString("id-ID");
+}
+```
+
+Contoh unit test:
+
+```js
+test("formatRp mengubah angka menjadi format Rupiah", () => {
+  expect(formatRp(25000)).toBe("Rp 25.000");
+});
+```
+
+Script:
+
+```json
+"test": "vitest",
+"test:unit": "vitest run"
+```
+
+Cara menjalankan:
+
+```bash
+cd frontend
+npm run test:unit
 ```
 
 ---
 
-# 🚀 Cara Menjalankan Project
+# 🚀 Performance Testing
+
+Performance Testing digunakan untuk mengetahui performa backend dan frontend saat aplikasi dijalankan.
+
+## 1. Performance Testing Backend
+
+Backend performance testing dilakukan menggunakan fitur bawaan Node.js yaitu `fetch` dan `perf_hooks`.
+
+Letak file:
+
+```txt
+backend/tests/performance/api.perf.js
+```
+
+Endpoint yang diuji:
+
+| Endpoint                    | Fungsi                    |
+| --------------------------- | ------------------------- |
+| `/api/vendors`              | Mengambil data vendor     |
+| `/api/menu`                 | Mengambil data menu       |
+| `/api/pesanan/booked-dates` | Mengambil tanggal booking |
+
+Contoh kode:
+
+```js
+const { performance } = require("perf_hooks");
+
+const BASE_URL = process.env.PERF_BASE_URL || "http://localhost:3001";
+
+const scenarios = [
+  {
+    name: "Get Vendors",
+    url: `${BASE_URL}/api/vendors`,
+  },
+  {
+    name: "Get Menu",
+    url: `${BASE_URL}/api/menu`,
+  },
+  {
+    name: "Get Booked Dates",
+    url: `${BASE_URL}/api/pesanan/booked-dates`,
+  },
+];
+```
+
+Performance test menghitung:
+
+1. Average response time
+2. Minimum response time
+3. Maximum response time
+4. P95 response time
+5. Jumlah error request
+
+Script:
+
+```json
+"test:perf": "node tests/performance/api.perf.js"
+```
+
+Cara menjalankan:
+
+```bash
+cd backend
+npm run dev
+```
+
+Buka terminal kedua:
+
+```bash
+cd backend
+npm run test:perf
+```
+
+## 2. Performance Testing Frontend
+
+Frontend performance testing dilakukan dengan mengecek hasil build frontend, response time halaman, dan ukuran bundle JS/CSS.
+
+Letak file:
+
+```txt
+frontend/tests/performance/frontend.perf.cjs
+```
+
+Halaman yang diuji:
+
+| Halaman | URL |
+| ------- | --- |
+| Home    | `/` |
+
+Performance test frontend menghitung:
+
+1. Response time halaman
+2. Average load time
+3. P95 load time
+4. Error request
+5. Total ukuran bundle JS
+6. Total ukuran bundle CSS
+
+Contoh kode:
+
+```js
+const fs = require("fs");
+const path = require("path");
+const { performance } = require("perf_hooks");
+
+const BASE_URL = process.env.PERF_FRONTEND_URL || "http://127.0.0.1:4173";
+
+const REQUEST_COUNT = 10;
+const MAX_AVERAGE_RESPONSE_TIME = 1000;
+const MAX_P95_RESPONSE_TIME = 1500;
+const MAX_JS_BUNDLE_SIZE_KB = 700;
+const MAX_CSS_BUNDLE_SIZE_KB = 300;
+```
+
+Script:
+
+```json
+"perf:preview": "vite preview --host 127.0.0.1 --port 4173",
+"perf:lighthouse": "node tests/performance/frontend.perf.cjs",
+"test:perf": "npm run build && start-server-and-test perf:preview http://127.0.0.1:4173 perf:lighthouse"
+```
+
+Cara menjalankan:
+
+```bash
+cd frontend
+npm run test:perf
+```
+
+Catatan hasil build:
+
+```txt
+Some chunks are larger than 500 kB after minification
+```
+
+Peringatan tersebut bukan error, tetapi catatan bahwa bundle frontend dapat dioptimalkan lagi menggunakan dynamic import atau code splitting.
+
+---
+
+# 🔐 Secure Coding Practice
+
+Secure Coding Practice diterapkan untuk meningkatkan keamanan aplikasi.
+
+## 1. Password dan OTP di-hash
+
+Password user dan OTP tidak disimpan dalam bentuk asli, tetapi di-hash menggunakan `bcryptjs`.
+
+Contoh:
+
+```js
+const hashedPassword = await bcrypt.hash(password, 10);
+```
+
+```js
+const otpHash = await bcrypt.hash(otp, 10);
+```
+
+## 2. Parameterized Query
+
+Query database menggunakan parameter `?` untuk mengurangi risiko SQL Injection.
+
+Contoh:
+
+```js
+const [users] = await pool.query(
+  "SELECT * FROM users WHERE email = ? LIMIT 1",
+  [email]
+);
+```
+
+## 3. Environment Variable
+
+Data sensitif seperti konfigurasi database dan email OTP disimpan pada `.env`.
+
+Contoh:
+
+```env
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=db_pemesanan_katering
+
+MAIL_USER=emailpengirim@gmail.com
+MAIL_PASS=app_password_gmail
+```
+
+## 4. `.env` Tidak Dipush ke GitHub
+
+File `.env` dimasukkan ke `.gitignore`.
+
+Contoh `.gitignore`:
+
+```gitignore
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+.env
+backend/.env
+frontend/.env
+```
+
+## 5. Helmet Security Headers
+
+Backend menggunakan `helmet` untuk menambahkan security headers.
+
+Contoh:
+
+```js
+const helmet = require("helmet");
+
+app.use(helmet());
+```
+
+## 6. CORS Configuration
+
+Backend hanya mengizinkan origin tertentu dari frontend.
+
+Contoh:
+
+```js
+const allowedOrigins = (process.env.CLIENT_ORIGIN || "http://localhost:5173")
+  .split(",")
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Origin tidak diizinkan oleh CORS."));
+    },
+    credentials: true,
+  })
+);
+```
+
+## 7. Rate Limiter
+
+Rate limiter digunakan untuk membatasi request berlebih pada endpoint sensitif seperti login dan OTP.
+
+Contoh:
+
+```js
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    success: false,
+    message: "Terlalu banyak percobaan login. Coba lagi nanti.",
+  },
+});
+```
+
+Digunakan pada route login:
+
+```js
+app.post("/api/login", authLimiter, async (req, res) => {
+  // logic login
+});
+```
+
+## 8. Validasi Input
+
+Backend melakukan validasi input sebelum data diproses.
+
+Contoh:
+
+```js
+if (!email || !password) {
+  return res.status(400).json({
+    success: false,
+    message: "Email dan password wajib diisi.",
+  });
+}
+```
+
+## 9. Audit Dependency
+
+Pengujian keamanan dependency dilakukan menggunakan:
+
+```bash
+npm audit
+```
+
+Pada backend sempat ditemukan vulnerability dari dependency performance testing `autocannon`. Karena dependency tersebut hanya digunakan untuk testing, dependency tersebut dihapus dan performance testing backend diganti menggunakan fitur bawaan Node.js yaitu `fetch` dan `perf_hooks`.
+
+Setelah perbaikan dilakukan, hasil audit backend menunjukkan:
+
+```txt
+found 0 vulnerabilities
+```
+
+---
+
+# ▶️ Cara Menjalankan Project
 
 ## 1. Clone Repository
 
@@ -1349,16 +1244,12 @@ git clone <url-repository>
 cd Tubes_KPL_Aduh
 ```
 
----
-
 ## 2. Install Backend
 
 ```bash
 cd backend
 npm install
 ```
-
----
 
 ## 3. Buat File `.env` Backend
 
@@ -1370,13 +1261,12 @@ DB_NAME=db_pemesanan_katering
 DB_PORT=3306
 
 PORT=3001
+CLIENT_ORIGIN=http://localhost:5173
 
 MAIL_USER=emailpengirim@gmail.com
 MAIL_PASS=app_password_gmail
 MAIL_FROM=Foodora <emailpengirim@gmail.com>
 ```
-
----
 
 ## 4. Jalankan Backend
 
@@ -1390,16 +1280,12 @@ Backend berjalan di:
 http://localhost:3001
 ```
 
----
-
 ## 5. Install Frontend
 
 ```bash
 cd ../frontend
 npm install
 ```
-
----
 
 ## 6. Jalankan Frontend
 
@@ -1415,7 +1301,62 @@ http://localhost:5173
 
 ---
 
-# 🌿 Cara Push ke Branch
+# 🧪 Cara Menjalankan Testing
+
+## Backend Unit Test
+
+```bash
+cd backend
+npm run test:unit
+```
+
+## Backend Performance Test
+
+Terminal pertama:
+
+```bash
+cd backend
+npm run dev
+```
+
+Terminal kedua:
+
+```bash
+cd backend
+npm run test:perf
+```
+
+## Backend Security Audit
+
+```bash
+cd backend
+npm audit
+```
+
+## Frontend Unit Test
+
+```bash
+cd frontend
+npm run test:unit
+```
+
+## Frontend Performance Test
+
+```bash
+cd frontend
+npm run test:perf
+```
+
+## Frontend Security Audit
+
+```bash
+cd frontend
+npm audit
+```
+
+---
+
+# 🌿 Cara Commit dan Push
 
 Branch yang digunakan:
 
@@ -1423,12 +1364,12 @@ Branch yang digunakan:
 Ovy_Branch
 ```
 
-Perintah push:
+Perintah:
 
 ```bash
 git status
 git add .
-git commit -m "Update fitur checkout, booking tanggal, OTP, dan pembayaran" -m "Menambahkan sistem tanggal booking pada checkout, validasi tanggal yang sudah dipesan, integrasi pesanan ke database, perbaikan OTP forgot password, serta memperbarui tampilan halaman Payment QRIS dan Payment Success."
+git commit -m "Menambahkan unit testing, performance testing, secure coding, dan README final"
 git push origin Ovy_Branch
 ```
 
@@ -1436,9 +1377,9 @@ git push origin Ovy_Branch
 
 # ✅ Kesimpulan
 
-Foodora Catering App adalah aplikasi pemesanan katering berbasis web yang memiliki fitur utama seperti register, login, forgot password, OTP, list vendor, detail vendor, keranjang, checkout, booking tanggal, pembayaran QRIS, payment success, dan histori pesanan.
+Foodora Catering App merupakan aplikasi pemesanan katering berbasis web yang memiliki fitur utama seperti register, login, forgot password, OTP, list vendor, detail vendor, keranjang, checkout, booking tanggal, pembayaran QRIS, payment success, dan histori pesanan.
 
-Dalam project ini diterapkan beberapa teknik konstruksi perangkat lunak, yaitu:
+Project ini menerapkan teknik konstruksi perangkat lunak, yaitu:
 
 1. Automata
 2. Table Driven Construction
@@ -1447,10 +1388,12 @@ Dalam project ini diterapkan beberapa teknik konstruksi perangkat lunak, yaitu:
 5. Code Reuse Library
 6. API
 
-Selain itu, project juga menerapkan prinsip **Clean Code** dan beberapa **Design Pattern**, yaitu:
+Project ini juga menerapkan:
 
-1. Singleton Pattern
-2. Module Pattern
-3. Context / Provider Pattern
+1. Singleton Pattern pada koneksi database.
+2. Clean Code melalui pemisahan file dan penamaan function yang jelas.
+3. Unit Testing pada backend dan frontend.
+4. Performance Testing pada backend dan frontend.
+5. Secure Coding Practice melalui bcrypt, parameterized query, `.env`, `.gitignore`, Helmet, CORS configuration, rate limiter, validasi input, dan npm audit.
 
-Dengan penerapan tersebut, aplikasi menjadi lebih terstruktur, mudah dipahami, mudah dikembangkan, dan sesuai dengan prinsip konstruksi perangkat lunak.
+Dengan penerapan tersebut, aplikasi menjadi lebih rapi, lebih aman, lebih mudah diuji, dan lebih mudah dikembangkan.
