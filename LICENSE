@@ -1,0 +1,89 @@
+MIT License
+
+Copyright (c) 2026 Foodora Catering App Team
+Telkom University Purwokerto
+Program Studi Rekayasa Perangkat Lunak (Software Engineering)
+
+---
+
+## Project Information
+
+**Project Name**: Foodora Catering App
+
+**Project Type**: Tugas Besar Konstruksi Perangkat Lunak
+
+**Course**: Konstruksi Perangkat Lunak
+
+**Institution**: Telkom University Purwokerto
+
+**Study Program**: Rekayasa Perangkat Lunak (Software Engineering)
+
+**Year**: 2026
+
+Foodora Catering App is a web-based catering ordering application developed as part of a Software Construction course project. This application provides features such as user registration, login, forgot password with OTP, vendor listing, menu detail, cart management, checkout, booking date selection, QRIS payment flow, order history, unit testing, performance testing, secure coding practice, and final project documentation.
+
+---
+
+## Contributors
+
+This project was developed by:
+
+* Aditio
+* Chiara
+* Shofi
+* Ghina
+
+---
+
+## Academic Purpose
+
+This project was created for educational, academic, and software engineering learning purposes. The source code, documentation, and related project files are intended to support learning activities, project evaluation, and further development in the field of software engineering.
+
+Any use, modification, or distribution of this software should respect the contributors, institution information, and applicable academic integrity rules. If this project is used as a reference for academic work, proper credit should be given to the original contributors.
+
+---
+
+## Third-Party Dependencies
+
+This software may use third-party libraries, frameworks, and tools, including but not limited to:
+
+* React
+* Vite
+* Node.js
+* Express.js
+* MySQL
+* bcryptjs
+* nodemailer
+* Jest
+* Vitest
+* Helmet
+* express-rate-limit
+* CORS
+
+Each third-party dependency remains subject to its own respective license.
+
+---
+
+## Security and Credentials Notice
+
+Sensitive configuration files, credentials, environment variables, database passwords, API keys, application passwords, private tokens, and other confidential information are not included in this license and should not be published in the repository.
+
+Users and contributors are responsible for managing their own environment configuration securely.
+
+---
+
+## Permission Notice
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, referred to as the "Software", to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software.
+
+The Software may also be furnished to other persons, provided that the following conditions are met:
+
+The copyright notice, project information, contributor list, institution information, third-party dependency notice, academic purpose statement, security and credentials notice, and this permission notice shall be included in all copies or substantial portions of the Software.
+
+---
+
+## Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, ACADEMIC ACCURACY, SECURITY GUARANTEE, AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL THE AUTHORS, CONTRIBUTORS, INSTITUTION, OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, DATA LOSS, SECURITY ISSUES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
